@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devansh Agrawal | Techno-Functional Odoo Consultant & Software Engineer</title>
+  
+  <!-- Professional Fonts: Poppins (Headings) + Lato (Body) + Fira Code (Code) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* -------------------------------------------
+       CSS VARIABLES & THEMES (Odoo Brand Palette)
+    ------------------------------------------- */
+    :root {
+      --odoo-primary: #714B67;
+      --odoo-primary-light: #8E5D82;
+      --odoo-teal: #017E84;
+      --odoo-teal-light: #029FA7;
+      
+      --bg-body: #f7f9fb;
+      --bg-surface: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.94);
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --nav-bg: rgba(255, 255, 255, 0.90);
+      --badge-bg: #f4ecf3;
+      --badge-text: #714B67;
+      --code-bg: #13161f;
+      --code-border: #283044;
+      --terminal-header: #1e2433;
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+      --floating-opacity: 0.30;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg-body: #0a0c12;
+      --bg-surface: #12151e;
+      --bg-card: rgba(23, 27, 38, 0.94);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border-color: #242c3d;
+      --nav-bg: rgba(18, 21, 30, 0.90);
+      --badge-bg: #2b1f2a;
+      --badge-text: #d896c6;
+      --code-bg: #090a0f;
+      --code-border: #1e2330;
+      --terminal-header: #151821;
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      --floating-opacity: 0.18;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body { 
+      font-family: 'Lato', sans-serif; 
+      background-color: var(--bg-body); 
+      color: var(--text-main); 
+      line-height: 1.65; 
+      transition: background-color 0.3s ease, color 0.3s ease; 
+      overflow-x: hidden; 
+      position: relative;
+    }
+
+    h1, h2, h3, h4, h5, .logo, .section-title, .btn {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 2; }
+
+    /* -------------------------------------------
+       STICKY / FIXED FLOATING BACKGROUND CANVAS
+    ------------------------------------------- */
+    .sticky-floating-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .float-icon {
+      position: absolute;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      padding: 4px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: var(--floating-opacity);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      animation: floatMotion 24s infinite ease-in-out alternate;
+    }
+
+    .float-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Fixed Multi-Point Coordinates */
+    .icon-1  { top: 5%;  left: 4%;  animation-duration: 22s; }
+    .icon-2  { top: 8%;  right: 5%; animation-duration: 26s; animation-delay: -3s; }
+    .icon-3  { top: 20%; left: 8%;  animation-duration: 20s; animation-delay: -6s; width: 46px; height: 46px; }
+    .icon-4  { top: 24%; right: 8%; animation-duration: 28s; animation-delay: -4s; }
+    .icon-5  { top: 38%; left: 3%;  animation-duration: 23s; animation-delay: -8s; }
+    .icon-6  { top: 42%; right: 4%; animation-duration: 25s; animation-delay: -2s; width: 48px; height: 48px; }
+    .icon-7  { top: 56%; left: 6%;  animation-duration: 27s; animation-delay: -9s; }
+    .icon-8  { top: 60%; right: 7%; animation-duration: 21s; animation-delay: -5s; }
+    .icon-9  { top: 74%; left: 4%;  animation-duration: 29s; animation-delay: -7s; width: 50px; height: 50px; }
+    .icon-10 { top: 78%; right: 6%; animation-duration: 24s; animation-delay: -1s; }
+    .icon-11 { top: 89%; left: 7%;  animation-duration: 25s; animation-delay: -5s; }
+    .icon-12 { top: 91%; right: 7%; animation-duration: 27s; animation-delay: -3s; }
+    .icon-13 { top: 15%; left: 48%; animation-duration: 30s; animation-delay: -10s; width: 44px; height: 44px; }
+    .icon-14 { top: 48%; left: 52%; animation-duration: 32s; animation-delay: -12s; width: 46px; height: 46px; }
+    .icon-15 { top: 80%; left: 48%; animation-duration: 27s; animation-delay: -4s; width: 44px; height: 44px; }
+
+    @keyframes floatMotion {
+      0%   { transform: translateY(0px) translateX(0px) rotate(0deg) scale(1); }
+      50%  { transform: translateY(-30px) translateX(20px) rotate(8deg) scale(1.06); }
+      100% { transform: translateY(20px) translateX(-15px) rotate(-6deg) scale(0.95); }
+    }
+
+    /* -------------------------------------------
+       SCROLL REVEAL ANIMATIONS
+    ------------------------------------------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* -------------------------------------------
+       HEADER / NAVBAR (NO COLLAPSE / NO OVERLAP)
+    ------------------------------------------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .nav-container { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      height: 72px; 
+      gap: 1.5rem;
+    }
+    
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      flex-shrink: 0; /* Prevents text collapsing */
+      transition: var(--transition);
+    }
+    .brand-logo:hover { transform: translateY(-1px); }
+
+    .logo-symbol {
+      width: 38px;
+      height: 38px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-symbol svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 3px 6px rgba(113, 75, 103, 0.35));
+    }
+
+    .logo-text-block {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .logo-name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.12rem;
+      letter-spacing: -0.3px;
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+
+    .logo-role {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--odoo-teal);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .nav-links { 
+      display: flex; 
+      align-items: center; 
+      list-style: none; 
+      gap: 1.3rem; 
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a { 
+      font-size: 0.9rem; 
+      font-weight: 500; 
+      color: var(--text-muted); 
+      transition: var(--transition); 
+      position: relative; 
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--odoo-primary); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: var(--odoo-teal);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-actions { display: flex; align-items: center; gap: 0.8rem; flex-shrink: 0; }
+
+    .theme-toggle-btn {
+      background: none;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    .theme-toggle-btn:hover { border-color: var(--odoo-primary); color: var(--odoo-primary); }
+
+    .mobile-menu-btn { 
+      display: none; 
+      background: none; 
+      border: none; 
+      font-size: 1.4rem; 
+      color: var(--text-main); 
+      cursor: pointer; 
+      padding: 0.4rem;
+    }
+
+    /* -------------------------------------------
+       BUTTONS & BADGES
+    ------------------------------------------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--odoo-primary); color: #fff; box-shadow: 0 4px 15px rgba(113, 75, 103, 0.25); }
+    .btn-primary:hover { background: var(--odoo-primary-light); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(113, 75, 103, 0.35); }
+    
+    .btn-outline { background: transparent; border: 1.5px solid var(--odoo-teal); color: var(--odoo-teal); }
+    .btn-outline:hover { background: var(--odoo-teal); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(1, 126, 132, 0.25); }
+
+    .badge {
+      display: inline-block;
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-family: 'Fira Code', monospace;
+    }
+
+    .badge-mode {
+      background: rgba(1, 126, 132, 0.12);
+      color: var(--odoo-teal);
+      border: 1px solid rgba(1, 126, 132, 0.25);
+      border-radius: 6px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .badge-loc {
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 0.2rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* -------------------------------------------
+       HERO & CODE WINDOW
+    ------------------------------------------- */
+    .hero {
+      min-height: calc(100vh - 72px);
+      margin-top: 72px;
+      display: flex;
+      align-items: center;
+      padding: 3rem 0;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-text .terminal-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: var(--odoo-teal);
+      background: var(--badge-bg);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .hero-text h1 {
+      font-size: 3.2rem;
+      line-height: 1.15;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-text h1 span { color: var(--odoo-primary); }
+
+    .typing-wrapper {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--odoo-teal);
+      margin-bottom: 1.2rem;
+      min-height: 2rem;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      background: var(--odoo-teal);
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    .hero-text p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 520px;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .code-window {
+      background: var(--code-bg);
+      border: 1px solid var(--code-border);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.82rem;
+      transition: var(--transition);
+      text-align: left !important;
+      width: 100%;
+      overflow: hidden !important;
+    }
+    .code-window:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+
+    .window-header {
+      background: var(--terminal-header);
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--code-border);
+      text-align: left !important;
+    }
+
+    .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+    .window-title { margin-left: auto; font-size: 0.75rem; color: #8e9bb0; }
+
+    .window-body {
+      padding: 1.3rem;
+      text-align: left !important;
+      direction: ltr;
+      overflow: hidden !important;
+    }
+
+    .window-body pre {
+      margin: 0;
+      white-space: pre-wrap !important;
+      word-break: break-word !important;
+      font-family: 'Fira Code', monospace !important;
+      line-height: 1.55;
+      text-align: left !important;
+      display: block;
+      overflow: hidden !important;
+    }
+
+    .window-body code {
+      font-family: inherit;
+      color: #abb2bf;
+      background: transparent;
+      padding: 0;
+      text-align: left !important;
+      display: block;
+      white-space: pre-wrap !important;
+      word-break: break-word !important;
+    }
+
+    .kw { color: #c678dd; font-weight: 600; }
+    .cls { color: #e5c07b; }
+    .str { color: #98c379; }
+    .func { color: #61afef; }
+    .comm { color: #5c6370; font-style: italic; }
+
+    /* -------------------------------------------
+       KPI STATS BAR
+    ------------------------------------------- */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      margin: 2rem auto;
+      backdrop-filter: blur(8px);
+    }
+
+    .stat-item { text-align: center; }
+    .stat-number { font-size: 2.3rem; font-weight: 800; color: var(--odoo-primary); font-family: 'Poppins', sans-serif; }
+    .stat-label { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; margin-top: 0.2rem; font-family: 'Poppins', sans-serif; }
+
+    /* -------------------------------------------
+       SECTIONS BASE
+    ------------------------------------------- */
+    section { padding: 5.5rem 0; position: relative; }
+    .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; text-align: center; letter-spacing: -0.5px; }
+    .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 3.5rem; font-size: 1.05rem; }
+
+    /* -------------------------------------------
+       ABOUT SECTION
+    ------------------------------------------- */
+    .profile-card {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 3rem;
+      background: var(--bg-card);
+      padding: 3rem;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+      align-items: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .profile-photo-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 0 auto;
+    }
+
+    .profile-photo-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, var(--odoo-primary), var(--odoo-teal));
+      opacity: 0.75;
+      filter: blur(8px);
+      z-index: 0;
+      transition: opacity 0.3s ease;
+    }
+    .profile-photo-wrapper:hover::before { opacity: 1; }
+
+    .profile-photo {
+      position: relative;
+      z-index: 1;
+      width: 260px;
+      height: 280px;
+      border-radius: 18px;
+      object-fit: cover;
+      object-position: center 18%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+      filter: contrast(1.08) brightness(1.04) saturate(1.06);
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .profile-photo:hover {
+      transform: scale(1.02);
+      filter: contrast(1.1) brightness(1.06) saturate(1.08);
+    }
+
+    .profile-info h3 { font-size: 1.6rem; margin-bottom: 1rem; color: var(--odoo-primary); }
+    .profile-info p { color: var(--text-muted); margin-bottom: 1.2rem; font-size: 1.02rem; line-height: 1.8; text-align: justify; }
+
+    /* -------------------------------------------
+       CLEAN RESUME-MAPPED SKILLS SECTION
+    ------------------------------------------- */
+    .skills-grid-resume {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-resume-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(8px);
+    }
+    .skill-resume-card:hover { transform: translateY(-4px); border-color: var(--odoo-primary); }
+
+    .skill-card-head {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.4rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .skill-head-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--badge-bg);
+      color: var(--odoo-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .skill-card-head h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .skill-badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .skill-pill {
+      padding: 0.5rem 0.95rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      transition: var(--transition);
+    }
+    .skill-pill:hover { border-color: var(--odoo-primary); color: var(--odoo-primary); transform: translateY(-2px); }
+    .skill-pill i { color: var(--odoo-teal); font-size: 0.95rem; }
+
+    /* -------------------------------------------
+       EXPERIENCE & EDUCATION TIMELINE
+    ------------------------------------------- */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      border-left: 2px solid var(--border-color);
+      padding-left: 2.5rem;
+    }
+
+    .timeline-item { position: relative; margin-bottom: 3rem; }
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.95rem;
+      top: 0.5rem;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--odoo-teal);
+      border: 4px solid var(--bg-body);
+      box-shadow: 0 0 10px var(--odoo-teal);
+    }
+
+    .timeline-content {
+      background: var(--bg-card);
+      padding: 2.2rem;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      backdrop-filter: blur(8px);
+    }
+    .timeline-content:hover { border-color: var(--odoo-primary); transform: translateX(5px); }
+
+    .card-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .org-header {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+    }
+
+    .org-logo-frame {
+      width: 52px;
+      height: 52px;
+      min-width: 52px;
+      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+    }
+
+    .org-logo-frame img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .org-monogram {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--odoo-primary);
+    }
+
+    .org-title-block h4 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-role {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--odoo-primary);
+    }
+
+    .date-pill {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: var(--bg-surface);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .card-meta-tags {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .timeline-content ul {
+      padding-left: 1.2rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .timeline-content ul li { margin-bottom: 0.6rem; }
+
+    /* -------------------------------------------
+       PROJECTS WITH CLIENT METADATA & PAGINATION
+    ------------------------------------------- */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 2rem;
+      min-height: 420px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--odoo-primary), var(--odoo-teal));
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .project-card:hover { transform: translateY(-6px); border-color: var(--odoo-primary-light); }
+    .project-card:hover::before { opacity: 1; }
+
+    .project-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .project-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .project-client-tag { font-size: 0.82rem; font-weight: 600; color: var(--odoo-teal); margin-bottom: 0.8rem; font-family: 'Poppins', sans-serif; }
+    .project-desc { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.2rem; flex-grow: 1; line-height: 1.6; }
+    
+    .project-desc ul {
+      padding-left: 1.1rem;
+      list-style-type: disc;
+    }
+    .project-desc ul li { margin-bottom: 0.35rem; }
+
+    .tech-stack-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+    .tech-pill { font-size: 0.74rem; font-family: 'Fira Code', monospace; background: var(--bg-surface); border: 1px solid var(--border-color); padding: 0.2rem 0.5rem; border-radius: 4px; color: var(--text-muted); }
+
+    .pagination-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .pagination-info {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .page-nav-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .page-nav-btn:hover:not(:disabled) {
+      border-color: var(--odoo-primary);
+      color: var(--odoo-primary);
+      transform: translateY(-2px);
+    }
+
+    .page-nav-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    /* -------------------------------------------
+       CONTACT SECTION & LIVE FORM
+    ------------------------------------------- */
+    .contact-wrapper {
+      max-width: 650px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      padding: 2.8rem;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .form-group { margin-bottom: 1.4rem; }
+    .form-group label { display: block; margin-bottom: 0.4rem; font-size: 0.9rem; font-weight: 600; font-family: 'Poppins', sans-serif; }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--odoo-primary);
+      box-shadow: 0 0 0 3px rgba(113, 75, 103, 0.15);
+    }
+
+    .form-status {
+      display: none;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      margin-top: 1.2rem;
+      text-align: center;
+      font-weight: 600;
+    }
+    .form-status.success {
+      display: block;
+      background: rgba(40, 167, 69, 0.12);
+      color: #28a745;
+      border: 1px solid rgba(40, 167, 69, 0.25);
+    }
+    .form-status.error {
+      display: block;
+      background: rgba(220, 53, 69, 0.12);
+      color: #dc3545;
+      border: 1px solid rgba(220, 53, 69, 0.25);
+    }
+
+    /* -------------------------------------------
+       FOOTER
+    ------------------------------------------- */
+    footer {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
+      padding: 4rem 0 2rem 0;
+      color: var(--text-muted);
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-col h4 {
+      color: var(--text-main);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-col p {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .footer-contacts {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-contacts li {
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer-contacts li i {
+      color: var(--odoo-teal);
+      width: 16px;
+    }
+
+    .footer-social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-main);
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      border-color: var(--odoo-primary);
+      color: var(--odoo-primary);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-color);
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 0.88rem;
+    }
+
+    /* -------------------------------------------
+       RESPONSIVE BREAKPOINTS (FIXED NAVBAR COLLAPSE)
+    ------------------------------------------- */
+    @media (max-width: 1024px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-surface);
+        flex-direction: column;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow);
+      }
+      .nav-links.active { display: flex; }
+      .mobile-menu-btn { display: block; }
+    }
+
+    @media (max-width: 880px) {
+      .hero-content { grid-template-columns: 1fr; text-align: center; }
+      .code-window, .window-body, .window-body pre, .window-body code { text-align: left !important; }
+      .code-window { margin-top: 2rem; }
+      .hero-text p { margin: 0 auto 2rem auto; }
+      .hero-actions { justify-content: center; }
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .profile-card { grid-template-columns: 1fr; text-align: center; }
+      .skills-grid-resume { grid-template-columns: 1fr; }
+      .card-top-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= 0. STICKY FULL-VIEWPORT FLOATING ODOO APP LOGOS ================= -->
+  <div class="sticky-floating-canvas" aria-hidden="true">
+    <div class="float-icon icon-1" title="Sales"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/sale/static/description/icon.png" alt="Sales"></div>
+    <div class="float-icon icon-2" title="CRM"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/crm/static/description/icon.png" alt="CRM"></div>
+    <div class="float-icon icon-3" title="Purchase"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/purchase/static/description/icon.png" alt="Purchase"></div>
+    <div class="float-icon icon-4" title="Inventory"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/stock/static/description/icon.png" alt="Inventory"></div>
+    <div class="float-icon icon-5" title="Accounting"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/account/static/description/icon.png" alt="Accounting"></div>
+    <div class="float-icon icon-6" title="Point of Sale"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/point_of_sale/static/description/icon.png" alt="POS"></div>
+    <div class="float-icon icon-7" title="Manufacturing"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/mrp/static/description/icon.png" alt="Manufacturing"></div>
+    <div class="float-icon icon-8" title="Project"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/project/static/description/icon.png" alt="Project"></div>
+    <div class="float-icon icon-9" title="Helpdesk"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/helpdesk/static/description/icon.png" alt="Helpdesk"></div>
+    <div class="float-icon icon-10" title="Employees"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/hr/static/description/icon.png" alt="Employees"></div>
+    <div class="float-icon icon-11" title="Field Service"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/industry_fsm/static/description/icon.png" alt="Field Service"></div>
+    <div class="float-icon icon-12" title="Timesheets"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/hr_timesheet/static/description/icon.png" alt="Timesheets"></div>
+    <div class="float-icon icon-13" title="Attendance"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/hr_attendance/static/description/icon.png" alt="Attendance"></div>
+    <div class="float-icon icon-14" title="Time Off"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/hr_holidays/static/description/icon.png" alt="Time Off"></div>
+    <div class="float-icon icon-15" title="Contacts"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/contacts/static/description/icon.png" alt="Contacts"></div>
+  </div>
+
+  <!-- ================= 1. NAVBAR WITH DEVELOPER LOGO ================= -->
+  <header>
+    <div class="container nav-container">
+      <a href="#home" class="brand-logo">
+        <div class="logo-symbol">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="22" fill="url(#logo-grad)"/>
+            <path d="M30 32L48 50L30 68" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M54 68H72" stroke="#017E84" stroke-width="8" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="logo-grad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#714B67"/>
+                <stop offset="1" stop-color="#1e2433"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="logo-text-block">
+          <span class="logo-name">Devansh Agrawal</span>
+          <span class="logo-role">Techno-Functional Odoo Consultant</span>
+        </div>
+      </a>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#profile">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="resume.pdf" download="Devansh_Agrawal_Resume.pdf" class="btn btn-outline" style="padding: 0.45rem 0.9rem; font-size: 0.85rem;">
+          <i class="fa-solid fa-arrow-down-to-bracket"></i> Resume
+        </a>
+        <button class="theme-toggle-btn" id="themeToggle" title="Toggle Day/Night">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="mobile-menu-btn" id="mobileToggle" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 2. HOME / HERO SECTION ================= -->
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <div class="terminal-tag">
+          <i class="fa-solid fa-code-branch"></i> git status: production_ready
+        </div>
+        <h1>Hi, I'm <span>Devansh Agrawal</span></h1>
+        
+        <div class="typing-wrapper">
+          <span id="typewriter"></span><span class="cursor">&nbsp;</span>
+        </div>
+
+        <p>
+          Techno-Functional Odoo Consultant & Software Engineer specializing in Python, Odoo 15+, custom module architecture, REST API integrations, version migrations, and QWeb report engineering.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Get In Touch</a>
+          <a href="resume.pdf" download="Devansh_Agrawal_Resume.pdf" class="btn btn-outline"><i class="fa-solid fa-file-arrow-down"></i> Download Resume</a>
+        </div>
+      </div>
+
+      <!-- Left-Aligned Code Editor with Auto-Wrap -->
+      <div class="code-window">
+        <div class="window-header">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+          <span class="window-title">devansh_profile.py</span>
+        </div>
+        <div class="window-body">
+<pre><code><span class="kw">from</span> odoo <span class="kw">import</span> models, fields, api
+
+<span class="kw">class</span> <span class="cls">DevanshProfile</span>(models.Model):
+    _name = <span class="str">'devansh.profile'</span>
+    _description = <span class="str">'Techno-Functional Consultant'</span>
+
+    name = fields.Char(default=<span class="str">'Devansh Agrawal'</span>)
+    focus = fields.Char(default=<span class="str">'Odoo 15+ & Python'</span>)
+    stack = fields.List([<span class="str">'Python'</span>, <span class="str">'Postgres'</span>, <span class="str">'Owl JS'</span>])
+    status = fields.Selection([
+        (<span class="str">'ready'</span>, <span class="str">'Available for Solutions'</span>)
+    ], default=<span class="str">'ready'</span>)
+
+    <span class="comm"># Architect scalable business workflows</span>
+    <span class="kw">def</span> <span class="func">deploy_solution</span>(<span class="kw">self</span>):
+        <span class="kw">return</span> <span class="kw">self</span>.status == <span class="str">'ready'</span></code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= KPI STATS BAR ================= -->
+  <div class="container reveal">
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Total Projects</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">60+</div>
+        <div class="stat-label">Customizations</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Migrations & Upgrades</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">API Integrations</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 3. ABOUT SECTION (ENHANCED AVATAR) ================= -->
+  <section id="profile" class="reveal">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">Bridging business strategy and technical software engineering</p>
+
+      <div class="profile-card">
+        <div class="profile-photo-wrapper">
+          <img src="profile.jpg" alt="Devansh Agrawal" class="profile-photo" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80'">
+        </div>
+
+        <div class="profile-info">
+          <h3>Techno-Functional Consultant</h3>
+          <p>
+            Software Engineer specializing in Python, Odoo 15+, and frontend technologies with comprehensive expertise in module development, REST API integrations, and report customization. Proven ability to translate client business needs into BRDs, functional specifications, and scalable technical implementations.
+          </p>
+          <p>
+            Experienced across seamless version migrations, cross-platform integrations (Magento/Adobe, POS, etc.), PostgreSQL performance optimization, and custom Owl JS components. Adept at balancing native ERP features with targeted customizations to minimize technical debt and maximize ROI.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4. CLEAN TECHNICAL SKILLS (NO IMAGES INSIDE) ================= -->
+  <section id="skills" style="background: var(--bg-surface);" class="reveal">
+    <div class="container">
+      <h2 class="section-title">Technical Skills & Ecosystem</h2>
+      <p class="section-subtitle">Categorized competencies, frameworks, and tools directly from my engineering background</p>
+
+      <div class="skills-grid-resume">
+        <!-- 1. Languages & Frameworks -->
+        <div class="skill-resume-card">
+          <div class="skill-card-head">
+            <div class="skill-head-icon"><i class="fa-solid fa-code"></i></div>
+            <h4>Languages & Frameworks</h4>
+          </div>
+          <div class="skill-badge-group">
+            <span class="skill-pill"><i class="fa-solid fa-cubes"></i> Odoo</span>
+            <span class="skill-pill"><i class="fa-brands fa-python"></i> Python</span>
+            <span class="skill-pill"><i class="fa-brands fa-js"></i> JavaScript</span>
+            <span class="skill-pill"><i class="fa-solid fa-cube"></i> Owl JS</span>
+            <span class="skill-pill"><i class="fa-solid fa-database"></i> PostgreSQL & ORM</span>
+            <span class="skill-pill"><i class="fa-solid fa-file-code"></i> XML & QWeb</span>
+            <span class="skill-pill"><i class="fa-brands fa-html5"></i> HTML & CSS</span>
+            <span class="skill-pill"><i class="fa-brands fa-bootstrap"></i> Bootstrap</span>
+          </div>
+        </div>
+
+        <!-- 2. Odoo Functional Modules -->
+        <div class="skill-resume-card">
+          <div class="skill-card-head">
+            <div class="skill-head-icon"><i class="fa-solid fa-cubes-stacked"></i></div>
+            <h4>Odoo Core Functional Modules</h4>
+          </div>
+          <div class="skill-badge-group">
+            <span class="skill-pill"><i class="fa-solid fa-handshake"></i> CRM</span>
+            <span class="skill-pill"><i class="fa-solid fa-chart-line"></i> Sales</span>
+            <span class="skill-pill"><i class="fa-solid fa-cart-shopping"></i> Purchase</span>
+            <span class="skill-pill"><i class="fa-solid fa-boxes-stacked"></i> Inventory</span>
+            <span class="skill-pill"><i class="fa-solid fa-industry"></i> Manufacturing</span>
+            <span class="skill-pill"><i class="fa-solid fa-cash-register"></i> POS</span>
+            <span class="skill-pill"><i class="fa-solid fa-list-check"></i> Project</span>
+            <span class="skill-pill"><i class="fa-solid fa-stopwatch"></i> Timesheet</span>
+            <span class="skill-pill"><i class="fa-solid fa-headset"></i> Helpdesk</span>
+            <span class="skill-pill"><i class="fa-solid fa-screwdriver-wrench"></i> Field Service</span>
+            <span class="skill-pill"><i class="fa-solid fa-user-tie"></i> Employee</span>
+            <span class="skill-pill"><i class="fa-solid fa-user-clock"></i> Attendance</span>
+            <span class="skill-pill"><i class="fa-solid fa-plane-departure"></i> Time Off</span>
+            <span class="skill-pill"><i class="fa-solid fa-address-book"></i> Contacts</span>
+          </div>
+        </div>
+
+        <!-- 3. Development Tools & Platforms -->
+        <div class="skill-resume-card">
+          <div class="skill-card-head">
+            <div class="skill-head-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <h4>Development & Platforms</h4>
+          </div>
+          <div class="skill-badge-group">
+            <span class="skill-pill"><i class="fa-solid fa-terminal"></i> PyCharm</span>
+            <span class="skill-pill"><i class="fa-solid fa-code"></i> VS Code</span>
+            <span class="skill-pill"><i class="fa-brands fa-git-alt"></i> GIT</span>
+            <span class="skill-pill"><i class="fa-brands fa-microsoft"></i> Azure</span>
+            <span class="skill-pill"><i class="fa-brands fa-microsoft"></i> Power Automate</span>
+            <span class="skill-pill"><i class="fa-brands fa-microsoft"></i> Power Platform</span>
+            <span class="skill-pill"><i class="fa-brands fa-microsoft"></i> SharePoint</span>
+          </div>
+        </div>
+
+        <!-- 4. AI & Productivity Tools -->
+        <div class="skill-resume-card">
+          <div class="skill-card-head">
+            <div class="skill-head-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h4>AI & Productivity Tools</h4>
+          </div>
+          <div class="skill-badge-group">
+            <span class="skill-pill"><i class="fa-solid fa-certificate" style="color: #e5a93c;"></i> Claude AI (Certified)</span>
+            <span class="skill-pill"><i class="fa-solid fa-robot"></i> ChatGPT</span>
+            <span class="skill-pill"><i class="fa-solid fa-microchip"></i> Gemini</span>
+            <span class="skill-pill"><i class="fa-solid fa-i-cursor"></i> Cursor AI</span>
+            <span class="skill-pill"><i class="fa-solid fa-atom"></i> Anti Gravity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. EXPERIENCE SECTION ================= -->
+  <section id="experience" class="reveal">
+    <div class="container">
+      <h2 class="section-title">Professional Experience</h2>
+      <p class="section-subtitle">Demonstrated history of enterprise software engineering and consulting</p>
+
+      <div class="timeline">
+        <!-- Role 1: iProgrammer -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="card-top-row">
+              <div class="org-header">
+                <div class="org-logo-frame">
+                  <img src="https://www.google.com/s2/favicons?domain=iprogrammer.com&sz=128" alt="iProgrammer" onerror="this.parentElement.innerHTML='<span class=\'org-monogram\'>IP</span>'">
+                </div>
+                <div class="org-title-block">
+                  <h4>Software Engineer</h4>
+                  <div class="timeline-role">iProgrammer Solutions Pvt. Ltd.</div>
+                </div>
+              </div>
+              <div class="date-pill">Jul 2026 - Present</div>
+            </div>
+
+            <div class="card-meta-tags">
+              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Pune, Maharashtra</span>
+              <span class="badge-mode"><i class="fa-solid fa-laptop-house"></i> Hybrid</span>
+            </div>
+
+            <ul>
+              <li>Developing enterprise-grade Odoo modules and scalable business applications aligned with industry best practices.</li>
+              <li>Engineering custom backend workflows and optimizing system performance for high-throughput enterprise deployments.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Role 2: Ksolves -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="card-top-row">
+              <div class="org-header">
+                <div class="org-logo-frame">
+                  <img src="https://www.google.com/s2/favicons?domain=ksolves.com&sz=128" alt="Ksolves" onerror="this.parentElement.innerHTML='<span class=\'org-monogram\'>KS</span>'">
+                </div>
+                <div class="org-title-block">
+                  <h4>Software Engineer (Techno-Functional Consultant)</h4>
+                  <div class="timeline-role">Ksolves India Pvt. Ltd.</div>
+                </div>
+              </div>
+              <div class="date-pill">Nov 2025 - Jul 2026</div>
+            </div>
+
+            <div class="card-meta-tags">
+              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Indore, Madhya Pradesh</span>
+              <span class="badge-mode" style="color: #017E84; background: rgba(1, 126, 132, 0.12);"><i class="fa-solid fa-building"></i> Onsite</span>
+            </div>
+
+            <ul>
+              <li>Served as a Techno-Functional Consultant, bridging business and technical teams through workflow analysis, requirements gathering, and tailored Odoo implementations.</li>
+              <li>Authored BRDs, functional specifications, effort estimations, and technical proposals to establish clear project roadmaps.</li>
+              <li>Led end-to-end Odoo customizations, balancing native ERP features with bespoke logic to minimize technical debt and maximize ROI.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Role 3: Brainvire -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="card-top-row">
+              <div class="org-header">
+                <div class="org-logo-frame">
+                  <img src="https://www.google.com/s2/favicons?domain=brainvire.com&sz=128" alt="Brainvire" onerror="this.parentElement.innerHTML='<span class=\'org-monogram\'>BV</span>'">
+                </div>
+                <div class="org-title-block">
+                  <h4>Software Engineer</h4>
+                  <div class="timeline-role">Brainvire Infotech Inc.</div>
+                </div>
+              </div>
+              <div class="date-pill">Jun 2023 - Aug 2025</div>
+            </div>
+
+            <div class="card-meta-tags">
+              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Mumbai, Maharashtra</span>
+              <span class="badge-mode"><i class="fa-solid fa-laptop-house"></i> Hybrid</span>
+            </div>
+
+            <ul>
+              <li>Architected and optimized backend functionalities across Odoo versions 16, 17, and 18 for international enterprise clients.</li>
+              <li>Spearheaded version migrations and third-party API integrations, ensuring zero business disruption and maximal reliability.</li>
+              <li>Engineered custom QWeb reporting solutions and business dashboards to empower stakeholders with tailored actionable insights.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Role 4: Pingaksh -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="card-top-row">
+              <div class="org-header">
+                <div class="org-logo-frame">
+                  <img src="https://www.google.com/s2/favicons?domain=pingakshtechnologies.com&sz=128" alt="Pingaksh" onerror="this.parentElement.innerHTML='<span class=\'org-monogram\'>PT</span>'">
+                </div>
+                <div class="org-title-block">
+                  <h4>Junior Software Engineer</h4>
+                  <div class="timeline-role">Pingaksh Technologies</div>
+                </div>
+              </div>
+              <div class="date-pill">Jan 2023 - Jun 2023</div>
+            </div>
+
+            <div class="card-meta-tags">
+              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Udaipur, Rajasthan</span>
+              <span class="badge-mode" style="color: #017E84; background: rgba(1, 126, 132, 0.12);"><i class="fa-solid fa-building"></i> Onsite</span>
+            </div>
+
+            <ul>
+              <li>Delivered digital workflow automation solutions for European clients (Denmark) leveraging Microsoft SharePoint, Power Automate, and the Power Platform ecosystem.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 6. PROJECTS SECTION ================= -->
+  <section id="projects" style="background: var(--bg-surface);" class="reveal">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">Real-world enterprise integrations, migrations, and customized ERP systems</p>
+
+      <div class="project-grid" id="projectContainer"></div>
+
+      <!-- Pagination Controls -->
+      <div class="pagination-bar">
+        <button class="page-nav-btn" id="prevBtn" onclick="changePage(-1)" title="Previous Projects">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="pagination-info" id="paginationInfo">1-3 of 6</div>
+        <button class="page-nav-btn" id="nextBtn" onclick="changePage(1)" title="Next Projects">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 7. EDUCATION SECTION ================= -->
+  <section id="education" class="reveal">
+    <div class="container">
+      <h2 class="section-title">Education Credentials</h2>
+      <p class="section-subtitle">Academic foundations in Computer Science and Engineering</p>
+
+      <div class="timeline">
+        <!-- University -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="card-top-row">
+              <div class="org-header">
+                <div class="org-logo-frame">
+                  <img src="https://www.google.com/s2/favicons?domain=marwadiuniversity.ac.in&sz=128" alt="Marwadi University" onerror="this.parentElement.innerHTML='<span class=\'org-monogram\'>MU</span>'">
+                </div>
+                <div class="org-title-block">
+                  <h4>Bachelor of Technology in Computer Science (AI)</h4>
+                  <div class="timeline-role">Marwadi University</div>
+                </div>
+              </div>
+              <div class="date-pill">2019 - 2023</div>
+            </div>
+
+            <div class="card-meta-tags">
+              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Rajkot, Gujarat</span>
+            </div>
+
+            <p style="color: var(--text-muted); font-size: 0.95rem;">
+              Focused on Artificial Intelligence, Data Structures, Relational Database Management Systems, and Object-Oriented Software Architecture.
+            </p>
+          </div>
+        </div>
+
+        <!-- Senior Secondary -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="card-top-row">
+              <div class="org-header">
+                <div class="org-logo-frame">
+                  <img src="https://www.google.com/s2/favicons?domain=ryaninternational.org&sz=128" alt="Ryan International" onerror="this.parentElement.innerHTML='<span class=\'org-monogram\'>RIS</span>'">
+                </div>
+                <div class="org-title-block">
+                  <h4>Senior Secondary Certificate (CBSE)</h4>
+                  <div class="timeline-role">Ryan International School</div>
+                </div>
+              </div>
+              <div class="date-pill">2018 - 2019</div>
+            </div>
+
+            <div class="card-meta-tags">
+              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Udaipur, Rajasthan</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="card-top-row">
+              <div class="org-header">
+                <div class="org-logo-frame">
+                  <img src="https://www.google.com/s2/favicons?domain=ryaninternational.org&sz=128" alt="Ryan International" onerror="this.parentElement.innerHTML='<span class=\'org-monogram\'>RIS</span>'">
+                </div>
+                <div class="org-title-block">
+                  <h4>Secondary School Certificate (CBSE)</h4>
+                  <div class="timeline-role">Ryan International School</div>
+                </div>
+              </div>
+              <div class="date-pill">2016 - 2017</div>
+            </div>
+
+            <div class="card-meta-tags">
+              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Udaipur, Rajasthan</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 8. CONTACT ME SECTION (LIVE FORMSPREE) ================= -->
+  <section id="contact" style="background: var(--bg-surface);" class="reveal">
+    <div class="container">
+      <h2 class="section-title">Contact Me</h2>
+      <p class="section-subtitle">Let's discuss your next Odoo implementation or technical requirement</p>
+
+      <div class="contact-wrapper">
+        <form id="contactForm" action="https://formspree.io/f/xgaezyla" method="POST">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="_replyto" placeholder="john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Odoo Implementation / Consulting" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Detail your project or requirements..." required></textarea>
+          </div>
+          <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+          
+          <div id="formStatus" class="form-status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="#home" class="brand-logo" style="margin-bottom: 1rem;">
+            <div class="logo-symbol" style="width: 32px; height: 32px;">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="100" height="100" rx="22" fill="url(#logo-grad-ft)"/>
+                <path d="M30 32L48 50L30 68" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M54 68H72" stroke="#017E84" stroke-width="8" stroke-linecap="round"/>
+                <defs>
+                  <linearGradient id="logo-grad-ft" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#714B67"/>
+                    <stop offset="1" stop-color="#1e2433"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="logo-text-block">
+              <span class="logo-name" style="font-size: 1.05rem;">Devansh Agrawal</span>
+              <span class="logo-role">Techno-Functional Odoo Consultant</span>
+            </div>
+          </a>
+          <p>
+            Techno-Functional Odoo Consultant & Software Engineer delivering scalable ERP architecture, integrations, and performance engineering.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://github.com" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="mailto:devanshagrawaludp@gmail.com" class="social-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-contacts" style="list-style: none;">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#profile">About Me</a></li>
+            <li><a href="#skills">Skills & Toolkit</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Enterprise Projects</a></li>
+            <li><a href="#education">Education</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Direct Contact</h4>
+          <ul class="footer-contacts">
+            <li><i class="fa-solid fa-envelope"></i> devanshagrawaludp@gmail.com</li>
+            <li><i class="fa-solid fa-phone"></i> +91 90011 40690</li>
+            <li><i class="fa-solid fa-location-dot"></i> Udaipur, Rajasthan / Pune, India</li>
+            <li><i class="fa-solid fa-briefcase"></i> Open for Consulting & Full-time</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Devansh Agrawal. Built for the Odoo & Python Ecosystem.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    /* -------------------------------------------
+       RESUME-DRIVEN PROJECTS DATABASE
+    ------------------------------------------- */
+    const allProjects = [
+      {
+        title: "Odoo-Magento Bi-Directional Integration",
+        badge: "Odoo 18 / REST API",
+        icon: "fa-solid fa-cart-shopping",
+        client: "In-House Enterprise Solution",
+        desc: "<ul><li>Engineered REST APIs enabling real-time bidirectional synchronization between Odoo and Magento.</li><li>Automated real-time data flows for inventory, product catalogs, customer data, and sales orders.</li><li>Conducted performance profiling and throughput optimization for high-volume transactions.</li></ul>",
+        tech: ["Odoo 18", "Magento", "REST API", "Python"]
+      },
+      {
+        title: "Store Credit & Financial Sync Platform",
+        badge: "Odoo 17 / E-Commerce",
+        icon: "fa-solid fa-credit-card",
+        client: "Client: USA • Retail Industry",
+        desc: "<ul><li>Integrated Magento's native store credit system directly into Odoo financial accounts.</li><li>Enabled automated real-time reconciliation for customer orders, refunds, and ledger balances.</li><li>Designed optimized custom credit transaction workflows with complete audit trail visibility.</li></ul>",
+        tech: ["Odoo 17", "Magento", "Python", "Accounting"]
+      },
+      {
+        title: "Luxury Fashion Multi-Platform Connector",
+        badge: "Odoo 18 / Adobe Sync",
+        icon: "fa-solid fa-shirt",
+        client: "Client: Singapore • Luxury Fashion Retail",
+        desc: "<ul><li>Developed end-to-end Odoo-Adobe synchronization pipeline including customer tier memberships.</li><li>Programmed complex business restriction logic and multi-tier pricing rules in Odoo.</li><li>Maintained real-time data consistency across distributed international retail channels.</li></ul>",
+        tech: ["Odoo 18", "Magento / Adobe", "Python", "Security Rules"]
+      },
+      {
+        title: "POS & Retail Backend Customization",
+        badge: "Odoo 16 / POS",
+        icon: "fa-solid fa-cash-register",
+        client: "Client: USA • Retail Industry",
+        desc: "<ul><li>Customized Odoo Point of Sale UI and backend reporting to match client operational workflows.</li><li>Built reactive POS custom components using JavaScript and backend Python ORM handlers.</li><li>Integrated third-party hardware peripherals and enhanced retail checkout speed.</li></ul>",
+        tech: ["Odoo 16", "POS", "JavaScript", "Python"]
+      },
+      {
+        title: "Enterprise Odoo Version Migration",
+        badge: "v14/15 → v18",
+        icon: "fa-solid fa-database",
+        client: "In-House System Upgrade",
+        desc: "<ul><li>Migrated core business models and custom modules from Odoo 14/15 to Odoo 18.</li><li>Refactored legacy codebases to ensure backward compatibility and continuous uptime.</li><li>Executed data migration scripts and validated database schema consistency.</li></ul>",
+        tech: ["Odoo 14-18", "Python", "PostgreSQL", "Data Migration"]
+      },
+      {
+        title: "Custom Diamond Industry QWeb & Portal Engine",
+        badge: "Odoo 17 / Customization",
+        icon: "fa-solid fa-gem",
+        client: "Client: USA & Canada • Diamond Industry",
+        desc: "<ul><li>Engineered dynamic backend QWeb reporting templates tailored for diamond industry compliance.</li><li>Implemented bespoke customer-facing portal and website customizations.</li><li>Refactored data models to handle multi-attribute grading specifications and certificates.</li></ul>",
+        tech: ["Odoo 17", "QWeb", "Python", "Website Builder"]
+      }
+    ];
+
+    let currentPage = 1;
+    const projectsPerPage = 3;
+
+    function renderProjects() {
+      const start = (currentPage - 1) * projectsPerPage;
+      const end = start + projectsPerPage;
+      const visibleProjects = allProjects.slice(start, end);
+      const totalProjects = allProjects.length;
+
+      const container = document.getElementById("projectContainer");
+      container.innerHTML = visibleProjects.map(p => `
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="badge">${p.badge}</span>
+            <i class="${p.icon}" style="color: var(--odoo-teal);"></i>
+          </div>
+          <h3 class="project-title">${p.title}</h3>
+          <div class="project-client-tag">${p.client}</div>
+          <div class="project-desc">${p.desc}</div>
+          <div class="tech-stack-pills">
+            ${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      const displayedEnd = Math.min(end, totalProjects);
+      document.getElementById("paginationInfo").innerText = `${start + 1}-${displayedEnd} of ${totalProjects}`;
+      document.getElementById("prevBtn").disabled = (currentPage === 1);
+      document.getElementById("nextBtn").disabled = (end >= totalProjects);
+    }
+
+    function changePage(delta) {
+      currentPage += delta;
+      renderProjects();
+    }
+
+    renderProjects();
+
+    /* -------------------------------------------
+       LIVE TYPEWRITER ENGINE
+    ------------------------------------------- */
+    const phrases = [
+      "Techno-Functional Odoo Consultant",
+      "Python Developer",
+      "API & Integration Specialist",
+      "Odoo 15+ Migration Engineer"
+    ];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typewriterEl = document.getElementById("typewriter");
+
+    function type() {
+      const currentPhrase = phrases[phraseIndex];
+      if (isDeleting) {
+        typewriterEl.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typewriterEl.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let speed = isDeleting ? 35 : 85;
+
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        speed = 1800;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        speed = 400;
+      }
+
+      setTimeout(type, speed);
+    }
+    type();
+
+    /* -------------------------------------------
+       SCROLL & THEME HANDLERS
+    ------------------------------------------- */
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      const windowHeight = window.innerHeight;
+      reveals.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 90) {
+          el.classList.add('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const activeTheme = htmlEl.getAttribute('data-theme');
+      const nextTheme = activeTheme === 'light' ? 'dark' : 'light';
+      htmlEl.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('theme', nextTheme);
+      updateIcon(nextTheme);
+    });
+
+    function updateIcon(theme) {
+      themeToggleBtn.innerHTML = theme === 'dark' 
+        ? '<i class="fa-solid fa-sun" style="color: #f1c40f;"></i>' 
+        : '<i class="fa-solid fa-moon"></i>';
+    }
+
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+    mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+
+    /* -------------------------------------------
+       LIVE EMAIL DISPATCH HANDLER (FORMSPREE)
+    ------------------------------------------- */
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+      formStatus.className = 'form-status';
+
+      const formData = new FormData(contactForm);
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          formStatus.textContent = "Thank you! Your message has been sent successfully to Devansh.";
+          formStatus.classList.add('success');
+          contactForm.reset();
+        } else {
+          formStatus.textContent = "Oops! There was an issue sending your message. Please email devanshagrawaludp@gmail.com directly.";
+          formStatus.classList.add('error');
+        }
+      } catch (error) {
+        formStatus.textContent = "Network error. Please email devanshagrawaludp@gmail.com directly.";
+        formStatus.classList.add('error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+      }
+    });
+  </script>
+</body>
+</html>
