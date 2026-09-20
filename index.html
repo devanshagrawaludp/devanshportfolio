@@ -1,81 +1,154 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Devansh Agrawal | Techno-Functional Odoo Consultant & Software Engineer</title>
   
-  <!-- Professional Fonts: Poppins (Headings) + Lato (Body) + Fira Code (Code) -->
+  <!-- Premium Fonts: Space Grotesk + Plus Jakarta Sans + Fira Code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
     /* -------------------------------------------
-       CSS VARIABLES & THEMES (Odoo Brand Palette)
+       ENTERPRISE COLOR SYSTEM & THEMES
     ------------------------------------------- */
     :root {
+      --odoo-primary: #8b557d;
+      --odoo-primary-light: #ba76a8;
+      --odoo-teal: #00a09d;
+      --odoo-teal-glow: rgba(0, 160, 157, 0.4);
+      --accent-green: #10b981;
+      --accent-wa: #25d366;
+      --accent-ig: #e1306c;
+
+      --bg-body: #06080d;
+      --bg-surface: #0c1018;
+      --bg-card: rgba(14, 19, 29, 0.85);
+      --bg-card-hover: rgba(20, 27, 43, 0.98);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(0, 160, 157, 0.55);
+      --nav-bg: rgba(6, 8, 13, 0.92);
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      
+      --badge-bg: rgba(139, 85, 125, 0.16);
+      --badge-text: #e6a8d6;
+      --badge-teal-bg: rgba(0, 160, 157, 0.12);
+      --badge-teal-text: #38e1dc;
+      
+      --code-bg: #07090e;
+      --code-border: rgba(255, 255, 255, 0.08);
+      --terminal-header: #0e121c;
+      
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+      --floating-opacity: 0.15;
+      --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="light"] {
       --odoo-primary: #714B67;
       --odoo-primary-light: #8E5D82;
       --odoo-teal: #017E84;
-      --odoo-teal-light: #029FA7;
-      
-      --bg-body: #f7f9fb;
-      --bg-surface: #ffffff;
-      --bg-card: rgba(255, 255, 255, 0.94);
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --border-color: #e2e8f0;
-      --nav-bg: rgba(255, 255, 255, 0.90);
-      --badge-bg: #f4ecf3;
-      --badge-text: #714B67;
-      --code-bg: #13161f;
-      --code-border: #283044;
-      --terminal-header: #1e2433;
-      --shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
-      --floating-opacity: 0.30;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+      --odoo-teal-glow: rgba(1, 126, 132, 0.25);
+      --accent-green: #059669;
 
-    [data-theme="dark"] {
-      --bg-body: #0a0c12;
-      --bg-surface: #12151e;
-      --bg-card: rgba(23, 27, 38, 0.94);
-      --text-main: #f1f5f9;
-      --text-muted: #94a3b8;
-      --border-color: #242c3d;
-      --nav-bg: rgba(18, 21, 30, 0.90);
-      --badge-bg: #2b1f2a;
-      --badge-text: #d896c6;
-      --code-bg: #090a0f;
-      --code-border: #1e2330;
-      --terminal-header: #151821;
-      --shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-      --floating-opacity: 0.18;
+      --bg-body: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.92);
+      --bg-card-hover: #ffffff;
+      --border-color: #e2e8f0;
+      --border-hover: rgba(113, 75, 103, 0.5);
+      --nav-bg: rgba(255, 255, 255, 0.94);
+
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+
+      --badge-bg: rgba(113, 75, 103, 0.1);
+      --badge-text: #714B67;
+      --badge-teal-bg: rgba(1, 126, 132, 0.1);
+      --badge-teal-text: #017E84;
+
+      --code-bg: #0e121a;
+      --code-border: #242c3d;
+      --terminal-header: #151a24;
+
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+      --floating-opacity: 0.22;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    html, body { max-width: 100vw; overflow-x: hidden; }
+
     body { 
-      font-family: 'Lato', sans-serif; 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
       background-color: var(--bg-body); 
       color: var(--text-main); 
       line-height: 1.65; 
       transition: background-color 0.3s ease, color 0.3s ease; 
-      overflow-x: hidden; 
       position: relative;
     }
 
-    h1, h2, h3, h4, h5, .logo, .section-title, .btn {
-      font-family: 'Poppins', sans-serif;
+    h1, h2, h3, h4, h5, .logo, .section-title, .btn, .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
     }
 
     a { text-decoration: none; color: inherit; }
-    .container { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 2; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 2; }
 
-    /* -------------------------------------------
-       STICKY / FIXED FLOATING BACKGROUND CANVAS
-    ------------------------------------------- */
+    /* Scroll Depth Progress Bar */
+    .scroll-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--odoo-primary), var(--odoo-teal));
+      z-index: 9999;
+      box-shadow: 0 0 12px var(--odoo-teal);
+      transition: width 0.1s linear;
+    }
+
+    /* Ambient Cursor Glow */
+    .cursor-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 160, 157, 0.10) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s ease;
+      will-change: transform;
+    }
+
+    .ambient-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      background: 
+        radial-gradient(circle at 10% 20%, rgba(139, 85, 125, 0.14), transparent 45%),
+        radial-gradient(circle at 90% 70%, rgba(0, 160, 157, 0.12), transparent 45%);
+      animation: ambientPulse 14s infinite alternate ease-in-out;
+    }
+
+    @keyframes ambientPulse {
+      0% { transform: scale(1) translateY(0); }
+      50% { transform: scale(1.05) translateY(-20px); }
+      100% { transform: scale(0.95) translateY(10px); }
+    }
+
+    /* Floating Ecosystem Logos */
     .sticky-floating-canvas {
       position: fixed;
       top: 0;
@@ -89,64 +162,77 @@
 
     .float-icon {
       position: absolute;
-      width: 52px;
-      height: 52px;
+      width: 48px;
+      height: 48px;
       border-radius: 12px;
-      padding: 4px;
+      padding: 6px;
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: var(--floating-opacity);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-      animation: floatMotion 24s infinite ease-in-out alternate;
+      box-shadow: var(--shadow);
+      animation: floatMotion 22s infinite ease-in-out alternate;
     }
 
-    .float-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    /* Fixed Multi-Point Coordinates */
-    .icon-1  { top: 5%;  left: 4%;  animation-duration: 22s; }
-    .icon-2  { top: 8%;  right: 5%; animation-duration: 26s; animation-delay: -3s; }
-    .icon-3  { top: 20%; left: 8%;  animation-duration: 20s; animation-delay: -6s; width: 46px; height: 46px; }
-    .icon-4  { top: 24%; right: 8%; animation-duration: 28s; animation-delay: -4s; }
-    .icon-5  { top: 38%; left: 3%;  animation-duration: 23s; animation-delay: -8s; }
-    .icon-6  { top: 42%; right: 4%; animation-duration: 25s; animation-delay: -2s; width: 48px; height: 48px; }
-    .icon-7  { top: 56%; left: 6%;  animation-duration: 27s; animation-delay: -9s; }
-    .icon-8  { top: 60%; right: 7%; animation-duration: 21s; animation-delay: -5s; }
-    .icon-9  { top: 74%; left: 4%;  animation-duration: 29s; animation-delay: -7s; width: 50px; height: 50px; }
-    .icon-10 { top: 78%; right: 6%; animation-duration: 24s; animation-delay: -1s; }
-    .icon-11 { top: 89%; left: 7%;  animation-duration: 25s; animation-delay: -5s; }
-    .icon-12 { top: 91%; right: 7%; animation-duration: 27s; animation-delay: -3s; }
-    .icon-13 { top: 15%; left: 48%; animation-duration: 30s; animation-delay: -10s; width: 44px; height: 44px; }
-    .icon-14 { top: 48%; left: 52%; animation-duration: 32s; animation-delay: -12s; width: 46px; height: 46px; }
-    .icon-15 { top: 80%; left: 48%; animation-duration: 27s; animation-delay: -4s; width: 44px; height: 44px; }
+    .float-icon img { width: 100%; height: 100%; object-fit: contain; }
+    .icon-1  { top: 6%;  left: 4%;  animation-duration: 20s; }
+    .icon-2  { top: 9%;  right: 5%; animation-duration: 24s; animation-delay: -3s; }
+    .icon-3  { top: 22%; left: 7%;  animation-duration: 18s; animation-delay: -6s; width: 42px; height: 42px; }
+    .icon-4  { top: 25%; right: 7%; animation-duration: 26s; animation-delay: -4s; }
+    .icon-5  { top: 40%; left: 3%;  animation-duration: 21s; animation-delay: -8s; }
+    .icon-6  { top: 43%; right: 4%; animation-duration: 23s; animation-delay: -2s; width: 44px; height: 44px; }
+    .icon-7  { top: 58%; left: 5%;  animation-duration: 25s; animation-delay: -9s; }
+    .icon-8  { top: 61%; right: 6%; animation-duration: 19s; animation-delay: -5s; }
+    .icon-9  { top: 75%; left: 3%;  animation-duration: 27s; animation-delay: -7s; width: 46px; height: 46px; }
+    .icon-10 { top: 79%; right: 5%; animation-duration: 22s; animation-delay: -1s; }
+    .icon-11 { top: 90%; left: 6%;  animation-duration: 23s; animation-delay: -5s; }
+    .icon-12 { top: 92%; right: 6%; animation-duration: 25s; animation-delay: -3s; }
 
     @keyframes floatMotion {
-      0%   { transform: translateY(0px) translateX(0px) rotate(0deg) scale(1); }
-      50%  { transform: translateY(-30px) translateX(20px) rotate(8deg) scale(1.06); }
-      100% { transform: translateY(20px) translateX(-15px) rotate(-6deg) scale(0.95); }
+      0%   { transform: translateY(0px) rotate(0deg); }
+      50%  { transform: translateY(-26px) translateX(16px) rotate(8deg); }
+      100% { transform: translateY(18px) translateX(-14px) rotate(-6deg); }
     }
 
     /* -------------------------------------------
-       SCROLL REVEAL ANIMATIONS
+       BIDIRECTIONAL DIRECTIONAL ANIMATIONS
     ------------------------------------------- */
-    .reveal {
+    .anim-up {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      transform: translateY(45px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
     }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
+    .anim-up.active { opacity: 1; transform: translateY(0); }
+
+    .anim-left {
+      opacity: 0;
+      transform: translateX(-60px) rotate(-1.5deg);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
     }
+    .anim-left.active { opacity: 1; transform: translateX(0) rotate(0deg); }
+
+    .anim-right {
+      opacity: 0;
+      transform: translateX(60px) rotate(1.5deg);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .anim-right.active { opacity: 1; transform: translateX(0) rotate(0deg); }
+
+    .anim-zoom {
+      opacity: 0;
+      transform: scale(0.94);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .anim-zoom.active { opacity: 1; transform: scale(1); }
 
     /* -------------------------------------------
-       HEADER / NAVBAR (NO COLLAPSE / NO OVERLAP)
+       HEADER / NAVBAR
     ------------------------------------------- */
     header {
       position: fixed;
@@ -154,7 +240,8 @@
       left: 0;
       width: 100%;
       background: var(--nav-bg);
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       z-index: 1000;
       border-bottom: 1px solid var(--border-color);
       transition: var(--transition);
@@ -164,45 +251,38 @@
       display: flex; 
       justify-content: space-between; 
       align-items: center; 
-      height: 72px; 
-      gap: 1.5rem;
+      height: 74px; 
+      gap: 1rem;
     }
     
     .brand-logo {
       display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
       text-decoration: none;
-      flex-shrink: 0; /* Prevents text collapsing */
+      flex-shrink: 0;
       transition: var(--transition);
     }
-    .brand-logo:hover { transform: translateY(-1px); }
+    .brand-logo:hover { transform: translateY(-2px) scale(1.02); }
 
     .logo-symbol {
-      width: 38px;
-      height: 38px;
+      width: 44px;
+      height: 44px;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: var(--transition);
+      flex-shrink: 0;
     }
+    .brand-logo:hover .logo-symbol { transform: rotate(6deg); }
 
-    .logo-symbol svg {
-      width: 100%;
-      height: 100%;
-      filter: drop-shadow(0 3px 6px rgba(113, 75, 103, 0.35));
-    }
-
-    .logo-text-block {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.15;
-    }
+    .logo-symbol svg { width: 100%; height: 100%; filter: drop-shadow(0 0 10px rgba(0, 160, 157, 0.4)); }
+    .logo-text-block { display: flex; flex-direction: column; line-height: 1.15; }
 
     .logo-name {
-      font-family: 'Poppins', sans-serif;
       font-weight: 800;
-      font-size: 1.12rem;
+      font-size: 1.15rem;
       letter-spacing: -0.3px;
       color: var(--text-main);
       white-space: nowrap;
@@ -213,7 +293,7 @@
       font-size: 0.7rem;
       font-weight: 600;
       color: var(--odoo-teal);
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
       white-space: nowrap;
     }
 
@@ -221,7 +301,7 @@
       display: flex; 
       align-items: center; 
       list-style: none; 
-      gap: 1.3rem; 
+      gap: 1.25rem; 
       margin: 0;
       padding: 0;
     }
@@ -234,7 +314,7 @@
       position: relative; 
       white-space: nowrap;
     }
-    .nav-links a:hover { color: var(--odoo-primary); }
+    .nav-links a:hover { color: var(--text-main); transform: translateY(-1px); }
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -242,33 +322,47 @@
       height: 2px;
       bottom: -4px;
       left: 0;
-      background: var(--odoo-teal);
-      transition: width 0.3s;
+      background: linear-gradient(90deg, var(--odoo-primary-light), var(--odoo-teal));
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 8px var(--odoo-teal);
     }
     .nav-links a:hover::after { width: 100%; }
 
-    .nav-actions { display: flex; align-items: center; gap: 0.8rem; flex-shrink: 0; }
+    .nav-actions { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
 
     .theme-toggle-btn {
-      background: none;
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border-color);
       color: var(--text-main);
-      padding: 0.5rem 0.75rem;
-      border-radius: 8px;
+      padding: 0.55rem 0.8rem;
+      border-radius: 9px;
       cursor: pointer;
       font-size: 1rem;
       transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .theme-toggle-btn:hover { border-color: var(--odoo-primary); color: var(--odoo-primary); }
+    .theme-toggle-btn:hover { 
+      border-color: var(--odoo-teal); 
+      color: var(--odoo-teal);
+      box-shadow: 0 0 15px var(--odoo-teal-glow);
+      transform: rotate(15deg) scale(1.05);
+    }
 
     .mobile-menu-btn { 
       display: none; 
-      background: none; 
-      border: none; 
-      font-size: 1.4rem; 
+      background: rgba(255, 255, 255, 0.05); 
+      border: 1px solid var(--border-color); 
+      font-size: 1.3rem; 
       color: var(--text-main); 
       cursor: pointer; 
-      padding: 0.4rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 9px;
+      align-items: center;
+      justify-content: center;
+      z-index: 1002;
     }
 
     /* -------------------------------------------
@@ -277,104 +371,171 @@
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.7rem 1.4rem;
-      border-radius: 8px;
+      gap: 0.6rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: 10px;
       font-weight: 600;
       font-size: 0.9rem;
       cursor: pointer;
       transition: var(--transition);
       border: none;
       white-space: nowrap;
+      position: relative;
+      overflow: hidden;
     }
-    .btn-primary { background: var(--odoo-primary); color: #fff; box-shadow: 0 4px 15px rgba(113, 75, 103, 0.25); }
-    .btn-primary:hover { background: var(--odoo-primary-light); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(113, 75, 103, 0.35); }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+      transition: left 0.6s ease;
+    }
+    .btn:hover::before { left: 100%; }
+
+    .btn-primary { 
+      background: linear-gradient(135deg, var(--odoo-primary), var(--odoo-primary-light)); 
+      color: #fff; 
+      box-shadow: 0 4px 18px rgba(139, 85, 125, 0.35); 
+    }
+    .btn-primary:hover { 
+      transform: translateY(-3px) scale(1.02); 
+      box-shadow: 0 8px 25px rgba(139, 85, 125, 0.55); 
+    }
     
-    .btn-outline { background: transparent; border: 1.5px solid var(--odoo-teal); color: var(--odoo-teal); }
-    .btn-outline:hover { background: var(--odoo-teal); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(1, 126, 132, 0.25); }
+    .btn-outline { 
+      background: transparent; 
+      border: 1.5px solid var(--odoo-teal); 
+      color: var(--odoo-teal); 
+    }
+    .btn-outline:hover { 
+      background: var(--odoo-teal); 
+      color: #fff; 
+      transform: translateY(-3px) scale(1.02); 
+      box-shadow: 0 8px 25px var(--odoo-teal-glow); 
+    }
+
+    .btn-wa {
+      background: rgba(37, 211, 102, 0.15);
+      border: 1.5px solid rgba(37, 211, 102, 0.4);
+      color: #25d366;
+    }
+    .btn-wa:hover {
+      background: #25d366;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    }
 
     .badge {
-      display: inline-block;
-      padding: 0.3rem 0.75rem;
-      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 7px;
       font-size: 0.75rem;
       font-weight: 600;
       background: var(--badge-bg);
       color: var(--badge-text);
       font-family: 'Fira Code', monospace;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .badge-teal {
+      background: var(--badge-teal-bg);
+      color: var(--badge-teal-text);
+      border: 1px solid rgba(0, 160, 157, 0.25);
     }
 
     .badge-mode {
-      background: rgba(1, 126, 132, 0.12);
+      background: var(--badge-teal-bg);
       color: var(--odoo-teal);
-      border: 1px solid rgba(1, 126, 132, 0.25);
-      border-radius: 6px;
-      padding: 0.2rem 0.55rem;
-      font-size: 0.72rem;
+      border: 1px solid rgba(0, 160, 157, 0.2);
+      border-radius: 7px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      font-family: 'Poppins', sans-serif;
     }
 
     .badge-loc {
-      background: var(--bg-surface);
+      background: rgba(255, 255, 255, 0.03);
       color: var(--text-muted);
       border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 0.2rem 0.55rem;
+      border-radius: 7px;
+      padding: 0.25rem 0.6rem;
       font-size: 0.75rem;
       font-weight: 500;
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
+      gap: 0.35rem;
     }
 
     /* -------------------------------------------
        HERO & CODE WINDOW
     ------------------------------------------- */
     .hero {
-      min-height: calc(100vh - 72px);
-      margin-top: 72px;
+      min-height: calc(100vh - 74px);
+      margin-top: 74px;
       display: flex;
       align-items: center;
-      padding: 3rem 0;
+      padding: 3.5rem 0;
     }
 
     .hero-content {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 3rem;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 3.5rem;
       align-items: center;
     }
 
     .hero-text .terminal-tag {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.55rem;
       font-family: 'Fira Code', monospace;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--odoo-teal);
-      background: var(--badge-bg);
-      padding: 0.4rem 0.9rem;
+      background: var(--badge-teal-bg);
+      padding: 0.45rem 1rem;
       border-radius: 20px;
-      margin-bottom: 1.2rem;
-      border: 1px solid var(--border-color);
+      margin-bottom: 1.4rem;
+      border: 1px solid rgba(0, 160, 157, 0.25);
+      animation: pulseTeal 3s infinite;
+    }
+
+    @keyframes pulseTeal {
+      0%, 100% { box-shadow: 0 0 0px transparent; }
+      50% { box-shadow: 0 0 16px var(--odoo-teal-glow); }
     }
 
     .hero-text h1 {
-      font-size: 3.2rem;
+      font-size: 3.3rem;
       line-height: 1.15;
       font-weight: 800;
-      margin-bottom: 1rem;
-      letter-spacing: -0.5px;
+      margin-bottom: 1.1rem;
+      letter-spacing: -0.8px;
     }
 
-    .hero-text h1 span { color: var(--odoo-primary); }
+    .hero-text h1 span { 
+      background: linear-gradient(135deg, var(--odoo-primary-light), var(--odoo-teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 8s infinite alternate ease-in-out;
+      background-size: 200% 200%;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
 
     .typing-wrapper {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 600;
       color: var(--odoo-teal);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.3rem;
       min-height: 2rem;
       font-family: 'Fira Code', monospace;
     }
@@ -391,8 +552,9 @@
     .hero-text p {
       color: var(--text-muted);
       font-size: 1.05rem;
-      margin-bottom: 2rem;
-      max-width: 520px;
+      margin-bottom: 2.2rem;
+      max-width: 530px;
+      line-height: 1.7;
     }
 
     .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
@@ -400,20 +562,24 @@
     .code-window {
       background: var(--code-bg);
       border: 1px solid var(--code-border);
-      border-radius: 12px;
+      border-radius: 14px;
       box-shadow: var(--shadow);
       font-family: 'Fira Code', monospace;
-      font-size: 0.82rem;
+      font-size: 0.83rem;
       transition: var(--transition);
       text-align: left !important;
       width: 100%;
       overflow: hidden !important;
     }
-    .code-window:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .code-window:hover { 
+      transform: translateY(-6px); 
+      border-color: rgba(0, 160, 157, 0.5); 
+      box-shadow: 0 20px 50px rgba(0, 160, 157, 0.25);
+    }
 
     .window-header {
       background: var(--terminal-header);
-      padding: 0.7rem 1.2rem;
+      padding: 0.75rem 1.2rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -421,14 +587,14 @@
       text-align: left !important;
     }
 
-    .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+    .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
     .dot-red { background: #ff5f56; }
     .dot-yellow { background: #ffbd2e; }
     .dot-green { background: #27c93f; }
     .window-title { margin-left: auto; font-size: 0.75rem; color: #8e9bb0; }
 
     .window-body {
-      padding: 1.3rem;
+      padding: 1.4rem;
       text-align: left !important;
       direction: ltr;
       overflow: hidden !important;
@@ -439,7 +605,7 @@
       white-space: pre-wrap !important;
       word-break: break-word !important;
       font-family: 'Fira Code', monospace !important;
-      line-height: 1.55;
+      line-height: 1.6;
       text-align: left !important;
       display: block;
       overflow: hidden !important;
@@ -463,214 +629,539 @@
     .comm { color: #5c6370; font-style: italic; }
 
     /* -------------------------------------------
-       KPI STATS BAR
+       NUMERICAL KPI COUNTER BAR (5 COLUMNS SINGLE ROW)
     ------------------------------------------- */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 2rem;
-      box-shadow: var(--shadow);
-      margin: 2rem auto;
-      backdrop-filter: blur(8px);
+    .stats-bar-wrapper {
+      margin: 1.5rem auto 3.5rem auto;
     }
 
-    .stat-item { text-align: center; }
-    .stat-number { font-size: 2.3rem; font-weight: 800; color: var(--odoo-primary); font-family: 'Poppins', sans-serif; }
-    .stat-label { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; margin-top: 0.2rem; font-family: 'Poppins', sans-serif; }
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.8rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 1.8rem 1rem;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .stats-bar:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+    }
+
+    .stats-bar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--odoo-primary-light), var(--odoo-teal), transparent);
+    }
+
+    .stat-item {
+      text-align: center;
+      position: relative;
+      padding: 0.25rem 0.5rem;
+    }
+
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 15%;
+      height: 70%;
+      width: 1px;
+      background: var(--border-color);
+    }
+
+    .stat-number-wrap {
+      display: inline-flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .stat-number {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1;
+    }
+
+    .stat-plus {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--odoo-teal);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+    }
 
     /* -------------------------------------------
        SECTIONS BASE
     ------------------------------------------- */
     section { padding: 5.5rem 0; position: relative; }
-    .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; text-align: center; letter-spacing: -0.5px; }
-    .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 3.5rem; font-size: 1.05rem; }
+    .section-title { font-size: 2.3rem; font-weight: 700; margin-bottom: 0.5rem; text-align: center; letter-spacing: -0.5px; }
+    .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 3.2rem; font-size: 1.02rem; }
 
     /* -------------------------------------------
-       ABOUT SECTION
+       ABOUT SECTION (BENTO GRID WITH CLEAN UNBOXED PROFILE)
     ------------------------------------------- */
-    .profile-card {
+    .bento-grid {
       display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 3rem;
+      grid-template-columns: 340px 1fr;
+      gap: 1.8rem;
+      align-items: stretch;
+    }
+
+    .bento-card {
       background: var(--bg-card);
-      padding: 3rem;
-      border-radius: 16px;
       border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2rem;
       box-shadow: var(--shadow);
-      align-items: center;
-      backdrop-filter: blur(8px);
-    }
-
-    .profile-photo-wrapper {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       position: relative;
-      display: inline-block;
-      margin: 0 auto;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .bento-card:hover { 
+      border-color: var(--border-hover); 
+      transform: translateY(-5px); 
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
     }
 
+    .bento-profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: space-between;
+    }
+
+    .profile-photo-wrapper { position: relative; margin: 1rem 0 1.5rem 0; }
     .profile-photo-wrapper::before {
       content: '';
       position: absolute;
-      inset: -4px;
-      border-radius: 22px;
+      inset: -5px;
+      border-radius: 24px;
       background: linear-gradient(135deg, var(--odoo-primary), var(--odoo-teal));
-      opacity: 0.75;
-      filter: blur(8px);
+      opacity: 0.8;
+      filter: blur(12px);
       z-index: 0;
       transition: opacity 0.3s ease;
+      animation: pulseGlow 4s infinite alternate;
     }
-    .profile-photo-wrapper:hover::before { opacity: 1; }
+    @keyframes pulseGlow {
+      0% { opacity: 0.6; filter: blur(10px); }
+      100% { opacity: 1; filter: blur(16px); }
+    }
 
     .profile-photo {
       position: relative;
       z-index: 1;
-      width: 260px;
-      height: 280px;
-      border-radius: 18px;
+      width: 220px;
+      height: 235px;
+      border-radius: 20px;
       object-fit: cover;
       object-position: center 18%;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
-      filter: contrast(1.08) brightness(1.04) saturate(1.06);
-      transition: transform 0.3s ease, filter 0.3s ease;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      transition: transform 0.4s ease;
     }
-    .profile-photo:hover {
-      transform: scale(1.02);
-      filter: contrast(1.1) brightness(1.06) saturate(1.08);
+    .bento-card:hover .profile-photo { transform: scale(1.03); }
+
+    .status-availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 0.4rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #34d399;
+      margin-bottom: 1rem;
     }
 
-    .profile-info h3 { font-size: 1.6rem; margin-bottom: 1rem; color: var(--odoo-primary); }
-    .profile-info p { color: var(--text-muted); margin-bottom: 1.2rem; font-size: 1.02rem; line-height: 1.8; text-align: justify; }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-green);
+      animation: pulseGreen 2s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .bento-profile h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .bento-profile .role-tagline { font-size: 0.85rem; color: var(--odoo-teal); font-weight: 600; font-family: 'Fira Code', monospace; margin-bottom: 1.1rem; }
+
+    /* Full-Width Meta Row Badges (No Clipping) */
+    .profile-meta-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .meta-row-item {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.65rem 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.86rem;
+      transition: var(--transition);
+    }
+
+    .meta-row-item:hover {
+      border-color: var(--odoo-teal);
+      background: rgba(0, 160, 157, 0.05);
+      transform: translateX(3px);
+    }
+
+    .meta-row-item i {
+      color: var(--odoo-teal);
+      font-size: 0.95rem;
+      width: 18px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .meta-label {
+      color: var(--text-muted);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.78rem;
+    }
+
+    .meta-val {
+      color: var(--text-main);
+      font-weight: 700;
+      margin-left: auto;
+    }
+
+    /* Clean Unboxed Hobbies Section */
+    .profile-simple-hobbies {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hobbies-label {
+      font-size: 0.75rem;
+      font-family: 'Fira Code', monospace;
+      color: var(--odoo-primary-light);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hobbies-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .hobby-pill {
+      font-size: 0.8rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition);
+    }
+
+    .hobby-pill:hover {
+      border-color: var(--odoo-teal);
+      color: var(--odoo-teal);
+      transform: translateY(-2px);
+      background: rgba(0, 160, 157, 0.08);
+    }
+
+    .hobby-pill i {
+      color: var(--odoo-teal);
+      font-size: 0.8rem;
+    }
+    
+    .profile-social-mini {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: auto;
+    }
+
+    .social-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-main);
+      transition: var(--transition);
+      font-size: 1.05rem;
+    }
+    .social-btn:hover { 
+      border-color: var(--odoo-teal); 
+      color: var(--odoo-teal); 
+      transform: translateY(-3px) scale(1.1); 
+      box-shadow: 0 4px 15px var(--odoo-teal-glow);
+    }
+    .social-btn.wa:hover { border-color: var(--accent-wa); color: var(--accent-wa); box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
+    .social-btn.ig:hover { border-color: var(--accent-ig); color: var(--accent-ig); box-shadow: 0 4px 15px rgba(225,48,108,0.4); }
+
+    .bento-right-mesh { display: flex; flex-direction: column; gap: 1.5rem; }
+    .bento-lead-card { padding: 2.2rem; }
+    .bento-badge-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; }
+    .bento-badge-header .tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: var(--odoo-teal);
+      background: var(--badge-teal-bg);
+      border: 1px solid rgba(0, 160, 157, 0.25);
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .bento-lead-card h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.3; color: var(--text-main); }
+    .bento-lead-card p { color: var(--text-muted); font-size: 1rem; line-height: 1.75; margin-bottom: 1.1rem; }
+    .bento-lead-card p:last-child { margin-bottom: 0; }
+
+    .bento-quad-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+    .bento-mini-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.4rem;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .bento-mini-card:hover { 
+      border-color: var(--odoo-teal); 
+      background: rgba(0, 160, 157, 0.06); 
+      transform: translateY(-3px); 
+      box-shadow: 0 10px 25px rgba(0, 160, 157, 0.15);
+    }
+
+    .mini-card-head { display: flex; align-items: center; gap: 0.75rem; }
+    .mini-card-head i {
+      font-size: 1.1rem;
+      color: var(--odoo-teal);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--badge-teal-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+    .bento-mini-card:hover .mini-card-head i { transform: rotate(10deg) scale(1.1); }
+
+    .mini-card-head h4 { font-size: 0.98rem; font-weight: 700; color: var(--text-main); }
+    .bento-mini-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; }
 
     /* -------------------------------------------
-       CLEAN RESUME-MAPPED SKILLS SECTION
+       SKILLS MATRIX (FULL-WIDTH 4TH CARD ON DESKTOP)
     ------------------------------------------- */
-    .skills-grid-resume {
+    .skills-matrix-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
     }
 
-    .skill-resume-card {
+    .matrix-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 2.2rem;
       box-shadow: var(--shadow);
       transition: var(--transition);
       display: flex;
       flex-direction: column;
-      backdrop-filter: blur(8px);
+      position: relative;
     }
-    .skill-resume-card:hover { transform: translateY(-4px); border-color: var(--odoo-primary); }
+    .matrix-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-5px);
+      background: var(--bg-card-hover);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+    }
 
-    .skill-card-head {
+    .matrix-card.full-width-desktop {
+      grid-column: 1 / -1;
+    }
+
+    .matrix-head {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
-      margin-bottom: 1.4rem;
-      padding-bottom: 0.9rem;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
+      padding-bottom: 1.2rem;
       border-bottom: 1px solid var(--border-color);
     }
 
-    .skill-head-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
+    .matrix-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
       background: var(--badge-bg);
-      color: var(--odoo-primary);
+      color: var(--badge-text);
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    .matrix-card:hover .matrix-icon-wrap { transform: scale(1.1) rotate(5deg); }
+
+    .matrix-icon-wrap.teal {
+      background: var(--badge-teal-bg);
+      color: var(--badge-teal-text);
+    }
+
+    .matrix-head h3 {
       font-size: 1.2rem;
-    }
-
-    .skill-card-head h4 {
-      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--text-main);
+      line-height: 1.25;
     }
 
-    .skill-badge-group {
+    .matrix-head p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-family: 'Fira Code', monospace;
+      margin-top: 0.15rem;
+    }
+
+    .skill-tags-group {
       display: flex;
       flex-wrap: wrap;
       gap: 0.65rem;
     }
 
-    .skill-pill {
-      padding: 0.5rem 0.95rem;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
+    .skill-tag-item {
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
-      transition: var(--transition);
+      gap: 0.6rem;
+      padding: 0.55rem 0.95rem;
+      border-radius: 9px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .skill-pill:hover { border-color: var(--odoo-primary); color: var(--odoo-primary); transform: translateY(-2px); }
-    .skill-pill i { color: var(--odoo-teal); font-size: 0.95rem; }
+
+    .skill-tag-item:hover {
+      border-color: var(--odoo-teal);
+      background: rgba(0, 160, 157, 0.12);
+      color: #fff;
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 6px 16px var(--odoo-teal-glow);
+    }
+
+    .skill-tag-item i {
+      color: var(--odoo-teal);
+      font-size: 0.95rem;
+      transition: transform 0.25s ease;
+    }
+    .skill-tag-item:hover i { transform: scale(1.2); }
 
     /* -------------------------------------------
-       EXPERIENCE & EDUCATION TIMELINE
+       EXPERIENCE PIPELINE
     ------------------------------------------- */
-    .timeline {
-      position: relative;
-      max-width: 900px;
+    .career-pipeline {
+      max-width: 960px;
       margin: 0 auto;
-      border-left: 2px solid var(--border-color);
-      padding-left: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+      position: relative;
     }
 
-    .timeline-item { position: relative; margin-bottom: 3rem; }
-    .timeline-item:last-child { margin-bottom: 0; }
-
-    .timeline-dot {
-      position: absolute;
-      left: -2.95rem;
-      top: 0.5rem;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--odoo-teal);
-      border: 4px solid var(--bg-body);
-      box-shadow: 0 0 10px var(--odoo-teal);
-    }
-
-    .timeline-content {
+    .career-node {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 2rem;
       background: var(--bg-card);
-      padding: 2.2rem;
-      border-radius: 16px;
       border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2.2rem;
       box-shadow: var(--shadow);
       transition: var(--transition);
-      backdrop-filter: blur(8px);
+      position: relative;
     }
-    .timeline-content:hover { border-color: var(--odoo-primary); transform: translateX(5px); }
 
-    .card-top-row {
+    .career-node:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      background: var(--bg-card-hover);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .career-node.featured {
+      border-color: rgba(0, 160, 157, 0.35);
+      background: linear-gradient(145deg, rgba(0, 160, 157, 0.05), var(--bg-card));
+    }
+
+    .career-entity-col {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 0.8rem;
+      flex-direction: column;
+      border-right: 1px solid var(--border-color);
+      padding-right: 1.8rem;
     }
 
-    .org-header {
-      display: flex;
-      align-items: center;
-      gap: 1.1rem;
-    }
-
-    .org-logo-frame {
-      width: 52px;
-      height: 52px;
-      min-width: 52px;
+    .corp-logo-wrap {
+      width: 54px;
+      height: 54px;
       border-radius: 12px;
       background: #ffffff;
       border: 1px solid var(--border-color);
@@ -678,85 +1169,254 @@
       align-items: center;
       justify-content: center;
       padding: 6px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
     }
+    .career-node:hover .corp-logo-wrap { transform: scale(1.08) rotate(3deg); }
+    .corp-logo-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .corp-monogram { font-weight: 800; font-size: 1.1rem; color: var(--odoo-primary); }
 
-    .org-logo-frame img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-
-    .org-monogram {
-      font-family: 'Poppins', sans-serif;
+    .company-name {
+      font-size: 1.12rem;
       font-weight: 700;
-      font-size: 1rem;
-      color: var(--odoo-primary);
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
     }
 
-    .org-title-block h4 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      line-height: 1.25;
-      margin-bottom: 0.2rem;
-    }
-
-    .timeline-role {
-      font-size: 0.98rem;
-      font-weight: 600;
-      color: var(--odoo-primary);
-    }
-
-    .date-pill {
+    .career-date-tag {
       font-family: 'Fira Code', monospace;
       font-size: 0.8rem;
       font-weight: 600;
-      background: var(--bg-surface);
-      color: var(--text-muted);
-      border: 1px solid var(--border-color);
-      padding: 0.3rem 0.75rem;
-      border-radius: 20px;
-      white-space: nowrap;
+      color: var(--odoo-teal);
+      margin-bottom: 0.8rem;
     }
 
-    .card-meta-tags {
+    .location-cluster {
       display: flex;
-      align-items: center;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 1.2rem;
+      gap: 0.45rem;
+      margin-top: auto;
     }
 
-    .timeline-content ul {
-      padding-left: 1.2rem;
-      color: var(--text-muted);
-      font-size: 0.95rem;
+    .career-detail-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .timeline-content ul li { margin-bottom: 0.6rem; }
+
+    .role-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .role-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .status-pill {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+
+    .status-pill.active {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .status-pill.active .radar-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+      position: relative;
+    }
+    .status-pill.active .radar-dot::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 1.5px solid #10b981;
+      animation: ripple 1.8s infinite;
+    }
+    @keyframes ripple {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+
+    .accomplishment-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .accomplishment-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .accomplishment-list li::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      top: 0.1rem;
+      font-size: 0.65rem;
+      color: var(--odoo-teal);
+    }
+
+    .accomplishment-list li strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .pipeline-chip {
+      font-size: 0.76rem;
+      font-family: 'Fira Code', monospace;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      padding: 0.22rem 0.6rem;
+      border-radius: 6px;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+    .career-node:hover .pipeline-chip {
+      border-color: rgba(0, 160, 157, 0.3);
+      color: var(--text-main);
+    }
 
     /* -------------------------------------------
-       PROJECTS WITH CLIENT METADATA & PAGINATION
+       EDUCATION SECTION (WITH INSTITUTION LOGOS)
+    ------------------------------------------- */
+    .education-pipeline {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .edu-node {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 1.8rem;
+      align-items: center;
+      position: relative;
+    }
+    .edu-node:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+      background: var(--bg-card-hover);
+    }
+    .edu-node.btech {
+      border-color: rgba(0, 160, 157, 0.35);
+      background: linear-gradient(145deg, rgba(0, 160, 157, 0.05), var(--bg-card));
+    }
+
+    .edu-logo-frame {
+      width: 72px;
+      height: 72px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .edu-node:hover .edu-logo-frame { transform: scale(1.08) rotate(3deg); }
+    .edu-logo-frame img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .edu-monogram { font-weight: 800; font-size: 1.25rem; color: var(--odoo-primary); }
+
+    .edu-detail h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.3rem;
+    }
+    .edu-institution {
+      font-size: 0.96rem;
+      color: var(--odoo-teal);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .edu-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .edu-side-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.6rem;
+    }
+
+    /* -------------------------------------------
+       PROJECTS SECTION (WITH TECH ICONS)
     ------------------------------------------- */
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 2rem;
-      min-height: 420px;
+      min-height: 440px;
     }
 
     .project-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 2.2rem;
+      border-radius: 18px;
+      padding: 2.4rem;
       box-shadow: var(--shadow);
       transition: var(--transition);
       display: flex;
       flex-direction: column;
       position: relative;
       overflow: hidden;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
     .project-card::before {
@@ -765,51 +1425,63 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 4px;
+      height: 3px;
       background: linear-gradient(90deg, var(--odoo-primary), var(--odoo-teal));
       opacity: 0;
       transition: var(--transition);
     }
 
-    .project-card:hover { transform: translateY(-6px); border-color: var(--odoo-primary-light); }
+    .project-card:hover { 
+      transform: translateY(-6px) scale(1.01); 
+      border-color: var(--border-hover); 
+      background: var(--bg-card-hover); 
+      box-shadow: 0 20px 45px rgba(0, 160, 157, 0.15);
+    }
     .project-card:hover::before { opacity: 1; }
 
-    .project-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-    .project-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .project-client-tag { font-size: 0.82rem; font-weight: 600; color: var(--odoo-teal); margin-bottom: 0.8rem; font-family: 'Poppins', sans-serif; }
-    .project-desc { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.2rem; flex-grow: 1; line-height: 1.6; }
-    
-    .project-desc ul {
-      padding-left: 1.1rem;
-      list-style-type: disc;
-    }
-    .project-desc ul li { margin-bottom: 0.35rem; }
+    .project-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.1rem; }
+    .project-title { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .project-client-tag { font-size: 0.84rem; font-weight: 600; color: var(--odoo-teal); margin-bottom: 0.9rem; }
+    .project-desc { color: var(--text-muted); font-size: 0.94rem; margin-bottom: 1.4rem; flex-grow: 1; line-height: 1.65; }
+    .project-desc ul { padding-left: 1.1rem; list-style-type: disc; }
+    .project-desc ul li { margin-bottom: 0.45rem; }
 
-    .tech-stack-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
-    .tech-pill { font-size: 0.74rem; font-family: 'Fira Code', monospace; background: var(--bg-surface); border: 1px solid var(--border-color); padding: 0.2rem 0.5rem; border-radius: 4px; color: var(--text-muted); }
+    .tech-stack-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
+    .tech-pill {
+      font-size: 0.76rem;
+      font-family: 'Fira Code', monospace;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      padding: 0.28rem 0.65rem;
+      border-radius: 7px;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: var(--transition);
+    }
+    .tech-pill:hover {
+      border-color: var(--odoo-teal);
+      background: rgba(0, 160, 157, 0.1);
+    }
+    .tech-pill i { color: var(--odoo-teal); }
 
     .pagination-bar {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 1.5rem;
-      margin-top: 3rem;
+      margin-top: 3.2rem;
     }
 
-    .pagination-info {
-      font-family: 'Fira Code', monospace;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text-muted);
-    }
-
+    .pagination-info { font-family: 'Fira Code', monospace; font-size: 0.95rem; font-weight: 600; color: var(--text-muted); }
     .page-nav-btn {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       color: var(--text-main);
       width: 44px;
       height: 44px;
-      border-radius: 10px;
+      border-radius: 11px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -817,40 +1489,42 @@
       font-size: 1rem;
       transition: var(--transition);
     }
-
-    .page-nav-btn:hover:not(:disabled) {
-      border-color: var(--odoo-primary);
-      color: var(--odoo-primary);
-      transform: translateY(-2px);
+    .page-nav-btn:hover:not(:disabled) { 
+      border-color: var(--odoo-teal); 
+      color: var(--odoo-teal); 
+      transform: translateY(-2px) scale(1.05); 
+      box-shadow: 0 4px 15px var(--odoo-teal-glow);
     }
-
-    .page-nav-btn:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-    }
+    .page-nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
     /* -------------------------------------------
-       CONTACT SECTION & LIVE FORM
+       CONTACT FORM
     ------------------------------------------- */
     .contact-wrapper {
-      max-width: 650px;
+      max-width: 680px;
       margin: 0 auto;
       background: var(--bg-card);
-      padding: 2.8rem;
-      border-radius: 16px;
+      padding: 3.2rem;
+      border-radius: 20px;
       border: 1px solid var(--border-color);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: var(--transition);
+    }
+    .contact-wrapper:hover {
+      border-color: rgba(0, 160, 157, 0.35);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
 
-    .form-group { margin-bottom: 1.4rem; }
-    .form-group label { display: block; margin-bottom: 0.4rem; font-size: 0.9rem; font-weight: 600; font-family: 'Poppins', sans-serif; }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.92rem; font-weight: 600; }
     .form-group input, .form-group textarea {
       width: 100%;
-      padding: 0.8rem 1rem;
-      border-radius: 8px;
+      padding: 0.85rem 1.1rem;
+      border-radius: 10px;
       border: 1px solid var(--border-color);
-      background: var(--bg-surface);
+      background: rgba(255, 255, 255, 0.03);
       color: var(--text-main);
       font-family: inherit;
       font-size: 0.95rem;
@@ -858,39 +1532,30 @@
     }
     .form-group input:focus, .form-group textarea:focus {
       outline: none;
-      border-color: var(--odoo-primary);
-      box-shadow: 0 0 0 3px rgba(113, 75, 103, 0.15);
+      border-color: var(--odoo-teal);
+      box-shadow: 0 0 0 3px var(--odoo-teal-glow);
+      background: rgba(0, 160, 157, 0.04);
     }
 
     .form-status {
       display: none;
-      padding: 0.85rem 1rem;
-      border-radius: 8px;
-      font-size: 0.92rem;
-      margin-top: 1.2rem;
+      padding: 0.9rem 1.1rem;
+      border-radius: 10px;
+      font-size: 0.94rem;
+      margin-top: 1.3rem;
       text-align: center;
       font-weight: 600;
     }
-    .form-status.success {
-      display: block;
-      background: rgba(40, 167, 69, 0.12);
-      color: #28a745;
-      border: 1px solid rgba(40, 167, 69, 0.25);
-    }
-    .form-status.error {
-      display: block;
-      background: rgba(220, 53, 69, 0.12);
-      color: #dc3545;
-      border: 1px solid rgba(220, 53, 69, 0.25);
-    }
+    .form-status.success { display: block; background: rgba(34, 197, 94, 0.12); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.25); }
+    .form-status.error { display: block; background: rgba(239, 68, 68, 0.12); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.25); }
 
     /* -------------------------------------------
-       FOOTER
+       FOOTER (WITH IDENTICAL LOGO)
     ------------------------------------------- */
     footer {
       background: var(--bg-surface);
       border-top: 1px solid var(--border-color);
-      padding: 4rem 0 2rem 0;
+      padding: 4.5rem 0 2.5rem 0;
       color: var(--text-muted);
       position: relative;
       z-index: 2;
@@ -899,111 +1564,140 @@
     .footer-grid {
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
+      gap: 3.5rem;
+      margin-bottom: 3.5rem;
     }
 
-    .footer-col h4 {
-      color: var(--text-main);
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-    }
+    .footer-col h4 { color: var(--text-main); font-size: 1.15rem; font-weight: 700; margin-bottom: 1.3rem; }
+    .footer-col p { font-size: 0.94rem; line-height: 1.7; margin-bottom: 1.2rem; }
 
-    .footer-col p {
-      font-size: 0.92rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
+    .footer-contacts { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .footer-contacts li { font-size: 0.94rem; display: flex; align-items: center; gap: 0.85rem; }
+    .footer-contacts li i { color: var(--odoo-teal); width: 16px; }
 
-    .footer-contacts {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
+    .footer-social-links { display: flex; gap: 0.85rem; margin-top: 1.1rem; flex-wrap: wrap; }
 
-    .footer-contacts li {
-      font-size: 0.92rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .footer-contacts li i {
-      color: var(--odoo-teal);
-      width: 16px;
-    }
-
-    .footer-social-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .social-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 8px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-main);
-      transition: var(--transition);
-    }
-
-    .social-btn:hover {
-      border-color: var(--odoo-primary);
-      color: var(--odoo-primary);
-      transform: translateY(-3px);
-    }
-
-    .footer-bottom {
-      border-top: 1px solid var(--border-color);
-      padding-top: 2rem;
-      text-align: center;
-      font-size: 0.88rem;
-    }
+    .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 2rem; text-align: center; font-size: 0.9rem; }
 
     /* -------------------------------------------
-       RESPONSIVE BREAKPOINTS (FIXED NAVBAR COLLAPSE)
+       MOBILE & HALF-SCREEN RESPONSIVENESS FIX
     ------------------------------------------- */
-    @media (max-width: 1024px) {
+    @media (max-width: 1240px) {
+      .mobile-menu-btn { display: flex; }
+      
       .nav-links {
-        display: none;
-        position: absolute;
-        top: 72px;
+        position: fixed;
+        top: 74px;
         left: 0;
-        width: 100%;
+        width: 100vw;
+        height: calc(100vh - 74px);
         background: var(--bg-surface);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         flex-direction: column;
-        padding: 1.5rem;
-        border-bottom: 1px solid var(--border-color);
+        align-items: center;
+        justify-content: flex-start;
+        padding: 3.5rem 1.5rem;
+        gap: 1.8rem;
+        border-bottom: none;
         box-shadow: var(--shadow);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-16px);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s ease;
+        overflow-y: auto;
+        z-index: 1001;
       }
-      .nav-links.active { display: flex; }
-      .mobile-menu-btn { display: block; }
+      .nav-links.active { display: flex; opacity: 1; visibility: visible; transform: translateY(0); }
+      .nav-links a { font-size: 1.15rem; font-weight: 600; width: 100%; text-align: center; padding: 0.6rem 0; }
+      
+      .skills-matrix-grid { grid-template-columns: 1fr 1fr; }
+      .matrix-card.full-width-desktop { grid-column: auto; }
     }
 
-    @media (max-width: 880px) {
+    @media (max-width: 1080px) {
+      .stats-bar {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+      }
+      .stat-item:nth-child(3)::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .bento-grid { grid-template-columns: 1fr; }
+      .bento-profile { padding: 2.5rem; }
+      .skills-matrix-grid { grid-template-columns: 1fr; }
+      .cursor-glow { display: none; }
+      
       .hero-content { grid-template-columns: 1fr; text-align: center; }
       .code-window, .window-body, .window-body pre, .window-body code { text-align: left !important; }
-      .code-window { margin-top: 2rem; }
-      .hero-text p { margin: 0 auto 2rem auto; }
+      .code-window { margin-top: 2.2rem; }
+      .hero-text p { margin: 0 auto 2.2rem auto; }
       .hero-actions { justify-content: center; }
-      .stats-bar { grid-template-columns: 1fr 1fr; }
-      .profile-card { grid-template-columns: 1fr; text-align: center; }
-      .skills-grid-resume { grid-template-columns: 1fr; }
-      .card-top-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      
+      .bento-quad-grid { grid-template-columns: 1fr; }
+      
+      .career-node {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+        padding: 1.8rem;
+      }
+      .career-entity-col {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-right: 0;
+        padding-bottom: 1.2rem;
+      }
+      
+      .edu-node {
+        grid-template-columns: 1fr;
+        text-align: left;
+        gap: 1.2rem;
+      }
+      .edu-side-meta {
+        align-items: flex-start;
+      }
+
+      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 1.4rem 1rem;
+      }
+      .stat-item::after {
+        display: none !important;
+      }
+      .stat-item:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .stats-bar { grid-template-columns: 1fr; gap: 1rem; }
+      .stat-item:not(:last-child)::after { display: none; }
+      .stat-number { font-size: 2.2rem; }
+      .hero-text h1 { font-size: 2.5rem; }
+      .nav-container { padding: 0 1rem; }
+      .btn-wa { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ================= 0. STICKY FULL-VIEWPORT FLOATING ODOO APP LOGOS ================= -->
+  <!-- Top Scroll Depth Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+  <!-- Interactive Mouse Cursor Glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Ambient Mesh Backdrop -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- Sticky Full-Viewport Floating Odoo Ecosystem App Logos -->
   <div class="sticky-floating-canvas" aria-hidden="true">
     <div class="float-icon icon-1" title="Sales"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/sale/static/description/icon.png" alt="Sales"></div>
     <div class="float-icon icon-2" title="CRM"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/crm/static/description/icon.png" alt="CRM"></div>
@@ -1017,31 +1711,33 @@
     <div class="float-icon icon-10" title="Employees"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/hr/static/description/icon.png" alt="Employees"></div>
     <div class="float-icon icon-11" title="Field Service"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/industry_fsm/static/description/icon.png" alt="Field Service"></div>
     <div class="float-icon icon-12" title="Timesheets"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/hr_timesheet/static/description/icon.png" alt="Timesheets"></div>
-    <div class="float-icon icon-13" title="Attendance"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/hr_attendance/static/description/icon.png" alt="Attendance"></div>
-    <div class="float-icon icon-14" title="Time Off"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/hr_holidays/static/description/icon.png" alt="Time Off"></div>
-    <div class="float-icon icon-15" title="Contacts"><img src="https://cdn.jsdelivr.net/gh/odoo/odoo@17.0/addons/contacts/static/description/icon.png" alt="Contacts"></div>
   </div>
 
-  <!-- ================= 1. NAVBAR WITH DEVELOPER LOGO ================= -->
+  <!-- ================= 1. NAVBAR ================= -->
   <header>
     <div class="container nav-container">
       <a href="#home" class="brand-logo">
         <div class="logo-symbol">
           <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100" height="100" rx="22" fill="url(#logo-grad)"/>
-            <path d="M30 32L48 50L30 68" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M54 68H72" stroke="#017E84" stroke-width="8" stroke-linecap="round"/>
             <defs>
-              <linearGradient id="logo-grad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#714B67"/>
-                <stop offset="1" stop-color="#1e2433"/>
+              <linearGradient id="logo-mesh" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#8b557d" />
+                <stop offset="100%" stop-color="#00a09d" />
+              </linearGradient>
+              <linearGradient id="stroke-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#00a09d" />
+                <stop offset="100%" stop-color="#ffffff" />
               </linearGradient>
             </defs>
+            <rect x="5" y="5" width="90" height="90" rx="24" fill="#0d111a" stroke="url(#logo-mesh)" stroke-width="3" />
+            <path d="M30 28H46C56 28 62 34 62 43C62 52 56 58 46 58H30V28Z" stroke="url(#stroke-grad)" stroke-width="5" stroke-linejoin="round" />
+            <path d="M42 28V58" stroke="url(#logo-mesh)" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+            <path d="M30 72L44 72" stroke="#00a09d" stroke-width="6" stroke-linecap="round" />
+            <circle cx="56" cy="72" r="3.5" fill="#f59e0b" />
           </svg>
         </div>
         <div class="logo-text-block">
           <span class="logo-name">Devansh Agrawal</span>
-          <span class="logo-role">Techno-Functional Odoo Consultant</span>
         </div>
       </a>
       
@@ -1056,11 +1752,14 @@
       </ul>
 
       <div class="nav-actions">
-        <a href="resume.pdf" download="Devansh_Agrawal_Resume.pdf" class="btn btn-outline" style="padding: 0.45rem 0.9rem; font-size: 0.85rem;">
+        <a href="https://wa.me/919001140690" target="_blank" class="btn btn-wa" style="padding: 0.45rem 0.9rem; font-size: 0.85rem;" title="Chat on WhatsApp">
+          <i class="fa-brands fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="resume.pdf" download="Devansh_Agrawal_Resume.pdf" class="btn btn-outline" style="padding: 0.45rem 0.95rem; font-size: 0.85rem;">
           <i class="fa-solid fa-arrow-down-to-bracket"></i> Resume
         </a>
-        <button class="theme-toggle-btn" id="themeToggle" title="Toggle Day/Night">
-          <i class="fa-solid fa-moon"></i>
+        <button class="theme-toggle-btn" id="themeToggle" title="Toggle Light/Dark Theme">
+          <i class="fa-solid fa-sun" style="color: #f59e0b;"></i>
         </button>
         <button class="mobile-menu-btn" id="mobileToggle" aria-label="Toggle Navigation Menu">
           <i class="fa-solid fa-bars"></i>
@@ -1069,31 +1768,32 @@
     </div>
   </header>
 
-  <!-- ================= 2. HOME / HERO SECTION ================= -->
+  <!-- ================= 2. HERO SECTION ================= -->
   <section id="home" class="hero">
     <div class="container hero-content">
-      <div class="hero-text">
+      <div class="hero-text anim-left">
         <div class="terminal-tag">
           <i class="fa-solid fa-code-branch"></i> git status: production_ready
         </div>
-        <h1>Hi, I'm <span>Devansh Agrawal</span></h1>
+        <h1>Architecting <span>Scalable Odoo</span> Ecosystems</h1>
         
         <div class="typing-wrapper">
           <span id="typewriter"></span><span class="cursor">&nbsp;</span>
         </div>
 
         <p>
-          Techno-Functional Odoo Consultant & Software Engineer specializing in Python, Odoo 15+, custom module architecture, REST API integrations, version migrations, and QWeb report engineering.
+          Techno-Functional Consultant and Software Engineer specializing in Python, PostgreSQL, and Odoo architecture. I translate complex business workflows into structured BRDs and scalable technical implementations—delivering high-throughput bidirectional REST integrations, seamless version migrations, and customized ERP modules designed to eliminate technical debt and maximize operational ROI.
         </p>
 
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Get In Touch</a>
-          <a href="resume.pdf" download="Devansh_Agrawal_Resume.pdf" class="btn btn-outline"><i class="fa-solid fa-file-arrow-down"></i> Download Resume</a>
+          <a href="https://wa.me/919001140690" target="_blank" class="btn btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp Me</a>
+          <a href="resume.pdf" download="Devansh_Agrawal_Resume.pdf" class="btn btn-outline"><i class="fa-solid fa-file-arrow-down"></i> Resume</a>
         </div>
       </div>
 
-      <!-- Left-Aligned Code Editor with Auto-Wrap -->
-      <div class="code-window">
+      <!-- Code Window with Right Animation -->
+      <div class="code-window anim-right">
         <div class="window-header">
           <span class="dot dot-red"></span>
           <span class="dot dot-yellow"></span>
@@ -1108,13 +1808,14 @@
     _description = <span class="str">'Techno-Functional Consultant'</span>
 
     name = fields.Char(default=<span class="str">'Devansh Agrawal'</span>)
-    focus = fields.Char(default=<span class="str">'Odoo 15+ & Python'</span>)
-    stack = fields.List([<span class="str">'Python'</span>, <span class="str">'Postgres'</span>, <span class="str">'Owl JS'</span>])
+    focus = fields.Char(default=<span class="str">'Odoo'</span>)
+    stack = fields.List([<span class="str">'Odoo'</span>, <span class="str">'Python'</span>, <span class="str">'PostgreSQL'</span>, <span class="str">'Owl JS'</span>, <span class="str">'REST APIs'</span>])
+    ai_augmented = fields.Boolean(default=<span class="kw">True</span>)
     status = fields.Selection([
-        (<span class="str">'ready'</span>, <span class="str">'Available for Solutions'</span>)
+        (<span class="str">'ready'</span>, <span class="str">'Available for Enterprise Solutions'</span>)
     ], default=<span class="str">'ready'</span>)
 
-    <span class="comm"># Architect scalable business workflows</span>
+    <span class="comm"># Deliver BRD-aligned scalable modules</span>
     <span class="kw">def</span> <span class="func">deploy_solution</span>(<span class="kw">self</span>):
         <span class="kw">return</span> <span class="kw">self</span>.status == <span class="str">'ready'</span></code></pre>
         </div>
@@ -1122,273 +1823,430 @@
     </div>
   </section>
 
-  <!-- ================= KPI STATS BAR ================= -->
-  <div class="container reveal">
-    <div class="stats-bar">
+  <!-- ================= NUMERICAL KPI COUNTER (5 IN SINGLE ROW) ================= -->
+  <div class="container anim-up stats-bar-wrapper">
+    <div class="stats-bar" id="statsContainer">
       <div class="stat-item">
-        <div class="stat-number">15+</div>
-        <div class="stat-label">Total Projects</div>
+        <div class="stat-number-wrap">
+          <div class="stat-number" data-target="15">0</div>
+          <span class="stat-plus">+</span>
+        </div>
+        <div class="stat-label">Client Projects</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">60+</div>
+        <div class="stat-number-wrap">
+          <div class="stat-number" data-target="50">0</div>
+          <span class="stat-plus">+</span>
+        </div>
         <div class="stat-label">Customizations</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">5+</div>
+        <div class="stat-number-wrap">
+          <div class="stat-number" data-target="5">0</div>
+          <span class="stat-plus">+</span>
+        </div>
         <div class="stat-label">Migrations & Upgrades</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">5+</div>
+        <div class="stat-number-wrap">
+          <div class="stat-number" data-target="6">0</div>
+          <span class="stat-plus">+</span>
+        </div>
         <div class="stat-label">API Integrations</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number-wrap">
+          <div class="stat-number" data-target="4">0</div>
+          <span class="stat-plus">+</span>
+        </div>
+        <div class="stat-label">Industry Solutions</div>
       </div>
     </div>
   </div>
 
-  <!-- ================= 3. ABOUT SECTION (ENHANCED AVATAR) ================= -->
-  <section id="profile" class="reveal">
+  <!-- ================= 3. ABOUT / PROFILE (BENTO GRID WITH CLEAN UNBOXED HOBBIES) ================= -->
+  <section id="profile">
     <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <p class="section-subtitle">Bridging business strategy and technical software engineering</p>
+      <h2 class="section-title anim-up">Techno-Functional Consulting</h2>
+      <p class="section-subtitle anim-up">Bridging strategic business objectives with enterprise-grade software execution</p>
 
-      <div class="profile-card">
-        <div class="profile-photo-wrapper">
-          <img src="profile.jpg" alt="Devansh Agrawal" class="profile-photo" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80'">
-        </div>
-
-        <div class="profile-info">
-          <h3>Techno-Functional Consultant</h3>
-          <p>
-            Software Engineer specializing in Python, Odoo 15+, and frontend technologies with comprehensive expertise in module development, REST API integrations, and report customization. Proven ability to translate client business needs into BRDs, functional specifications, and scalable technical implementations.
-          </p>
-          <p>
-            Experienced across seamless version migrations, cross-platform integrations (Magento/Adobe, POS, etc.), PostgreSQL performance optimization, and custom Owl JS components. Adept at balancing native ERP features with targeted customizations to minimize technical debt and maximize ROI.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 4. CLEAN TECHNICAL SKILLS (NO IMAGES INSIDE) ================= -->
-  <section id="skills" style="background: var(--bg-surface);" class="reveal">
-    <div class="container">
-      <h2 class="section-title">Technical Skills & Ecosystem</h2>
-      <p class="section-subtitle">Categorized competencies, frameworks, and tools directly from my engineering background</p>
-
-      <div class="skills-grid-resume">
-        <!-- 1. Languages & Frameworks -->
-        <div class="skill-resume-card">
-          <div class="skill-card-head">
-            <div class="skill-head-icon"><i class="fa-solid fa-code"></i></div>
-            <h4>Languages & Frameworks</h4>
+      <div class="bento-grid">
+        <!-- Left Bento Card: Profile, Unboxed Quick Intel & Streamlined Hobbies -->
+        <div class="bento-card bento-profile anim-left">
+          <div class="status-availability">
+            <span class="status-dot"></span> Available for Consulting
           </div>
-          <div class="skill-badge-group">
-            <span class="skill-pill"><i class="fa-solid fa-cubes"></i> Odoo</span>
-            <span class="skill-pill"><i class="fa-brands fa-python"></i> Python</span>
-            <span class="skill-pill"><i class="fa-brands fa-js"></i> JavaScript</span>
-            <span class="skill-pill"><i class="fa-solid fa-cube"></i> Owl JS</span>
-            <span class="skill-pill"><i class="fa-solid fa-database"></i> PostgreSQL & ORM</span>
-            <span class="skill-pill"><i class="fa-solid fa-file-code"></i> XML & QWeb</span>
-            <span class="skill-pill"><i class="fa-brands fa-html5"></i> HTML & CSS</span>
-            <span class="skill-pill"><i class="fa-brands fa-bootstrap"></i> Bootstrap</span>
+          
+          <div class="profile-photo-wrapper">
+            <img src="profile.jpg" alt="Devansh Agrawal" class="profile-photo" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80'">
           </div>
-        </div>
 
-        <!-- 2. Odoo Functional Modules -->
-        <div class="skill-resume-card">
-          <div class="skill-card-head">
-            <div class="skill-head-icon"><i class="fa-solid fa-cubes-stacked"></i></div>
-            <h4>Odoo Core Functional Modules</h4>
+          <h3>Devansh Agrawal</h3>
+          <div class="role-tagline">Techno-Functional Consultant</div>
+
+          <!-- Full-Width Meta Row Badges (No Horizontal Clipping) -->
+          <div class="profile-meta-list">
+            <div class="meta-row-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span class="meta-label">Location:</span>
+              <strong class="meta-val">Udaipur, Rajasthan</strong>
+            </div>
+            <div class="meta-row-item">
+              <i class="fa-solid fa-earth-americas"></i>
+              <span class="meta-label">Client Footprint:</span>
+              <strong class="meta-val">India, USA, UAE, Singapore, Canada</strong>
+            </div>
           </div>
-          <div class="skill-badge-group">
-            <span class="skill-pill"><i class="fa-solid fa-handshake"></i> CRM</span>
-            <span class="skill-pill"><i class="fa-solid fa-chart-line"></i> Sales</span>
-            <span class="skill-pill"><i class="fa-solid fa-cart-shopping"></i> Purchase</span>
-            <span class="skill-pill"><i class="fa-solid fa-boxes-stacked"></i> Inventory</span>
-            <span class="skill-pill"><i class="fa-solid fa-industry"></i> Manufacturing</span>
-            <span class="skill-pill"><i class="fa-solid fa-cash-register"></i> POS</span>
-            <span class="skill-pill"><i class="fa-solid fa-list-check"></i> Project</span>
-            <span class="skill-pill"><i class="fa-solid fa-stopwatch"></i> Timesheet</span>
-            <span class="skill-pill"><i class="fa-solid fa-headset"></i> Helpdesk</span>
-            <span class="skill-pill"><i class="fa-solid fa-screwdriver-wrench"></i> Field Service</span>
-            <span class="skill-pill"><i class="fa-solid fa-user-tie"></i> Employee</span>
-            <span class="skill-pill"><i class="fa-solid fa-user-clock"></i> Attendance</span>
-            <span class="skill-pill"><i class="fa-solid fa-plane-departure"></i> Time Off</span>
-            <span class="skill-pill"><i class="fa-solid fa-address-book"></i> Contacts</span>
+
+          <!-- Simple Direct Inline Hobbies (No Outer Box) -->
+          <div class="profile-simple-hobbies">
+            <span class="hobbies-label"><i class="fa-solid fa-compass"></i> Beyond The Code:</span>
+            <div class="hobbies-pill-row">
+              <span class="hobby-pill"><i class="fa-solid fa-headphones"></i> Music</span>
+              <span class="hobby-pill"><i class="fa-solid fa-film"></i> Travelling</span>
+              <span class="hobby-pill"><i class="fa-solid fa-users"></i> Networking</span>
+            </div>
+          </div>
+
+          <!-- Social Links Strip -->
+          <div class="profile-social-mini">
+            <a href="https://wa.me/919001140690" target="_blank" class="social-btn wa" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-btn ig" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://github.com" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="mailto:devanshagrawaludp@gmail.com" class="social-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
           </div>
         </div>
 
-        <!-- 3. Development Tools & Platforms -->
-        <div class="skill-resume-card">
-          <div class="skill-card-head">
-            <div class="skill-head-icon"><i class="fa-solid fa-laptop-code"></i></div>
-            <h4>Development & Platforms</h4>
+        <!-- Right Bento Mesh (Slides in from Right) -->
+        <div class="bento-right-mesh anim-right">
+          <div class="bento-card bento-lead-card">
+            <div class="bento-badge-header">
+              <span class="tag">Engineering Philosophy</span>
+              <span class="badge badge-teal"><i class="fa-solid fa-shield-halved"></i> Production Ready</span>
+            </div>
+            <h3>Eliminating Technical Debt Through Strategic ERP Architecture</h3>
+            <p>
+              Enterprise ERP implementations often falter under the weight of brittle, over-engineered customizations that compound maintenance costs and derail version upgrades. As a Techno-Functional Consultant, I sit at the critical intersection of business strategy and core software engineering. I translate multifaceted operational requirements into structured Business Requirement Documents (BRDs), functional specifications, and resilient technical roadmaps.
+            </p>
+            <p>
+              My architectural methodology prioritizes standard, native Odoo capabilities across versions 16 through 19 to preserve system maintainability. Bespoke Python modules, PostgreSQL tuning, and custom API pipelines are deployed intentionally—reserving custom engineering strictly for high-impact workflows that drive competitive differentiation and clear operational ROI.
+            </p>
           </div>
-          <div class="skill-badge-group">
-            <span class="skill-pill"><i class="fa-solid fa-terminal"></i> PyCharm</span>
-            <span class="skill-pill"><i class="fa-solid fa-code"></i> VS Code</span>
-            <span class="skill-pill"><i class="fa-brands fa-git-alt"></i> GIT</span>
-            <span class="skill-pill"><i class="fa-brands fa-microsoft"></i> Azure</span>
-            <span class="skill-pill"><i class="fa-brands fa-microsoft"></i> Power Automate</span>
-            <span class="skill-pill"><i class="fa-brands fa-microsoft"></i> Power Platform</span>
-            <span class="skill-pill"><i class="fa-brands fa-microsoft"></i> SharePoint</span>
-          </div>
-        </div>
 
-        <!-- 4. AI & Productivity Tools -->
-        <div class="skill-resume-card">
-          <div class="skill-card-head">
-            <div class="skill-head-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-            <h4>AI & Productivity Tools</h4>
-          </div>
-          <div class="skill-badge-group">
-            <span class="skill-pill"><i class="fa-solid fa-certificate" style="color: #e5a93c;"></i> Claude AI (Certified)</span>
-            <span class="skill-pill"><i class="fa-solid fa-robot"></i> ChatGPT</span>
-            <span class="skill-pill"><i class="fa-solid fa-microchip"></i> Gemini</span>
-            <span class="skill-pill"><i class="fa-solid fa-i-cursor"></i> Cursor AI</span>
-            <span class="skill-pill"><i class="fa-solid fa-atom"></i> Anti Gravity</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 5. EXPERIENCE SECTION ================= -->
-  <section id="experience" class="reveal">
-    <div class="container">
-      <h2 class="section-title">Professional Experience</h2>
-      <p class="section-subtitle">Demonstrated history of enterprise software engineering and consulting</p>
-
-      <div class="timeline">
-        <!-- Role 1: iProgrammer -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="card-top-row">
-              <div class="org-header">
-                <div class="org-logo-frame">
-                  <img src="https://www.google.com/s2/favicons?domain=iprogrammer.com&sz=128" alt="iProgrammer" onerror="this.parentElement.innerHTML='<span class=\'org-monogram\'>IP</span>'">
-                </div>
-                <div class="org-title-block">
-                  <h4>Software Engineer</h4>
-                  <div class="timeline-role">iProgrammer Solutions Pvt. Ltd.</div>
-                </div>
+          <div class="bento-quad-grid">
+            <div class="bento-mini-card">
+              <div class="mini-card-head">
+                <i class="fa-solid fa-diagram-project"></i>
+                <h4>End-to-End Delivery</h4>
               </div>
-              <div class="date-pill">Jul 2026 - Present</div>
+              <p>Scoping, effort estimation, custom module engineering, UAT, and production deployment.</p>
             </div>
 
-            <div class="card-meta-tags">
-              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Pune, Maharashtra</span>
+            <div class="bento-mini-card">
+              <div class="mini-card-head">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                <h4>Version Migrations</h4>
+              </div>
+              <p>Executed seamless upgrades (Odoo 14/15 to 18) with zero data loss and automated validation.</p>
+            </div>
+
+            <div class="bento-mini-card">
+              <div class="mini-card-head">
+                <i class="fa-solid fa-network-wired"></i>
+                <h4>API & Middleware</h4>
+              </div>
+              <p>Bi-directional sync architectures for Adobe Commerce, Magento, and POS networks.</p>
+            </div>
+
+            <div class="bento-mini-card">
+              <div class="mini-card-head">
+                <i class="fa-solid fa-microchip"></i>
+                <h4>AI-Driven Velocity</h4>
+              </div>
+              <p>Certified Claude AI specialist utilizing modern workflows to accelerate testing and delivery.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 4. SKILLS MATRIX (FULL WIDTH 4TH BOX IN DESKTOP) ================= -->
+  <section id="skills" style="background: var(--bg-surface);">
+    <div class="container">
+      <h2 class="section-title anim-up">Technical Skills & Functional Ecosystem</h2>
+      <p class="section-subtitle anim-up">Categorized competencies spanning ERP functional consulting, core software engineering, and modern delivery</p>
+
+      <div class="skills-matrix-grid">
+        
+        <!-- Pillar 1: Odoo Functional Modules -->
+        <div class="matrix-card anim-left">
+          <div class="matrix-head">
+            <div class="matrix-icon-wrap teal"><i class="fa-solid fa-cubes-stacked"></i></div>
+            <div>
+              <h3>Odoo Modules</h3>
+              <p>Core ERP Apps (v15+)</p>
+            </div>
+          </div>
+          <div class="skill-tags-group">
+            <span class="skill-tag-item"><i class="fa-solid fa-boxes-stacked"></i> Inventory (WMS)</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-cart-shopping"></i> Purchase</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-industry"></i> Manufacturing (MRP)</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-handshake"></i> CRM</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-chart-line"></i> Sales</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-cash-register"></i> Point of Sale (POS)</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-credit-card"></i> Invoicing & Accounting</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-list-check"></i> Project</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-stopwatch"></i> Timesheets</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-headset"></i> Helpdesk</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-screwdriver-wrench"></i> Field Service</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-user-clock"></i> Employee & Attendance</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-plane-departure"></i> Time Off</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-address-book"></i> Contacts</span>
+          </div>
+        </div>
+
+        <!-- Pillar 2: Core Engineering & Stack -->
+        <div class="matrix-card anim-up">
+          <div class="matrix-head">
+            <div class="matrix-icon-wrap"><i class="fa-solid fa-server"></i></div>
+            <div>
+              <h3>Backend & Stack Engineering</h3>
+              <p>Core Languages & Database</p>
+            </div>
+          </div>
+          <div class="skill-tags-group">
+            <span class="skill-tag-item"><i class="fa-brands fa-python"></i> Python</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-cubes"></i> Odoo ORM & Modules</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-database"></i> PostgreSQL Optimization</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-network-wired"></i> RESTful APIs & Webhooks</span>
+            <span class="skill-tag-item"><i class="fa-brands fa-js"></i> JavaScript</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-cube"></i> Owl Framework</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-file-code"></i> XML & View Inheritance</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-file-invoice"></i> QWeb PDF Reports</span>
+            <span class="skill-tag-item"><i class="fa-brands fa-html5"></i> HTML5 / CSS3</span>
+            <span class="skill-tag-item"><i class="fa-brands fa-bootstrap"></i> Bootstrap 5</span>
+          </div>
+        </div>
+
+        <!-- Pillar 3: Techno-Functional Consulting -->
+        <div class="matrix-card anim-right">
+          <div class="matrix-head">
+            <div class="matrix-icon-wrap teal"><i class="fa-solid fa-briefcase"></i></div>
+            <div>
+              <h3>Techno-Functional Consulting</h3>
+              <p>Analysis, Scoping & Delivery</p>
+            </div>
+          </div>
+          <div class="skill-tags-group">
+            <span class="skill-tag-item"><i class="fa-solid fa-file-lines"></i> Business Requirement Docs (BRD)</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-file-contract"></i> Functional Specs (FSD)</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-scale-balanced"></i> Gap Analysis</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-calculator"></i> Effort Estimation (WBS)</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-cloud-arrow-up"></i> Version Upgrades (v14-v18)</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-arrow-right-arrow-left"></i> Magento / Adobe Sync</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-vial-circle-check"></i> UAT & Stakeholder Training</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-shield-virus"></i> Technical Debt Elimination</span>
+          </div>
+        </div>
+
+        <!-- Pillar 4: AI & Dev Ecosystem (SPREADS FULL WIDTH ON DESKTOP) -->
+        <div class="matrix-card full-width-desktop anim-up">
+          <div class="matrix-head">
+            <div class="matrix-icon-wrap"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div>
+              <h3>AI Tools, Cloud & Dev Ecosystem</h3>
+              <p>Modern Engineering Productivity & Enterprise Automation Platforms</p>
+            </div>
+          </div>
+          <div class="skill-tags-group">
+            <span class="skill-tag-item"><i class="fa-solid fa-certificate" style="color: #f59e0b;"></i> Claude AI (Certified)</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-i-cursor"></i> Cursor AI</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-robot"></i> ChatGPT & Gemini</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-terminal"></i> PyCharm & VS Code</span>
+            <span class="skill-tag-item"><i class="fa-brands fa-git-alt"></i> Git Version Control</span>
+            <span class="skill-tag-item"><i class="fa-brands fa-microsoft"></i> Microsoft Azure</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-gears"></i> Power Automate</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-cubes"></i> Power Platform</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-share-nodes"></i> SharePoint</span>
+            <span class="skill-tag-item"><i class="fa-solid fa-atom"></i> Anti Gravity</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. CAREER PIPELINE ================= -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title anim-up">Professional Experience</h2>
+      <p class="section-subtitle anim-up">Demonstrated record delivering enterprise ERP architectures and functional implementations</p>
+
+      <div class="career-pipeline">
+
+        <!-- Role 1: iProgrammer (Animates Left) -->
+        <div class="career-node featured anim-left">
+          <div class="career-entity-col">
+            <div class="corp-logo-wrap">
+              <img src="https://www.google.com/s2/favicons?domain=iprogrammer.com&sz=128" alt="iProgrammer" onerror="this.parentElement.innerHTML='<span class=\'corp-monogram\'>IP</span>'">
+            </div>
+            <div class="company-name">iProgrammer Solutions Pvt. Ltd.</div>
+            <div class="career-date-tag">Jul 2026 - Present</div>
+            
+            <div class="location-cluster">
+              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Pune, MH</span>
               <span class="badge-mode"><i class="fa-solid fa-laptop-house"></i> Hybrid</span>
             </div>
+          </div>
 
-            <ul>
+          <div class="career-detail-col">
+            <div class="role-header-row">
+              <h3 class="role-title">Software Engineer</h3>
+              <span class="status-pill active"><span class="radar-dot"></span> Active Engagement</span>
+            </div>
+
+            <ul class="accomplishment-list">
               <li>Developing enterprise-grade Odoo modules and scalable business applications aligned with industry best practices.</li>
               <li>Engineering custom backend workflows and optimizing system performance for high-throughput enterprise deployments.</li>
             </ul>
+
+            <div class="tag-row">
+              <span class="pipeline-chip">Odoo 18+</span>
+              <span class="pipeline-chip">Python</span>
+              <span class="pipeline-chip">PostgreSQL</span>
+              <span class="pipeline-chip">Pre-Sales</span>
+              <span class="pipeline-chip">Industry Solutions</span>
+              <span class="pipeline-chip">Community & Enterprise</span>
+              <span class="pipeline-chip">Solution  Architecting</span>
+            </div>
           </div>
         </div>
 
-        <!-- Role 2: Ksolves -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="card-top-row">
-              <div class="org-header">
-                <div class="org-logo-frame">
-                  <img src="https://www.google.com/s2/favicons?domain=ksolves.com&sz=128" alt="Ksolves" onerror="this.parentElement.innerHTML='<span class=\'org-monogram\'>KS</span>'">
-                </div>
-                <div class="org-title-block">
-                  <h4>Software Engineer (Techno-Functional Consultant)</h4>
-                  <div class="timeline-role">Ksolves India Pvt. Ltd.</div>
-                </div>
-              </div>
-              <div class="date-pill">Nov 2025 - Jul 2026</div>
+        <!-- Role 2: Ksolves (Animates Right) -->
+        <div class="career-node anim-right">
+          <div class="career-entity-col">
+            <div class="corp-logo-wrap">
+              <img src="https://www.google.com/s2/favicons?domain=ksolves.com&sz=128" alt="Ksolves" onerror="this.parentElement.innerHTML='<span class=\'corp-monogram\'>KS</span>'">
             </div>
-
-            <div class="card-meta-tags">
-              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Indore, Madhya Pradesh</span>
-              <span class="badge-mode" style="color: #017E84; background: rgba(1, 126, 132, 0.12);"><i class="fa-solid fa-building"></i> Onsite</span>
-            </div>
-
-            <ul>
-              <li>Served as a Techno-Functional Consultant, bridging business and technical teams through workflow analysis, requirements gathering, and tailored Odoo implementations.</li>
-              <li>Authored BRDs, functional specifications, effort estimations, and technical proposals to establish clear project roadmaps.</li>
-              <li>Led end-to-end Odoo customizations, balancing native ERP features with bespoke logic to minimize technical debt and maximize ROI.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Role 3: Brainvire -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="card-top-row">
-              <div class="org-header">
-                <div class="org-logo-frame">
-                  <img src="https://www.google.com/s2/favicons?domain=brainvire.com&sz=128" alt="Brainvire" onerror="this.parentElement.innerHTML='<span class=\'org-monogram\'>BV</span>'">
-                </div>
-                <div class="org-title-block">
-                  <h4>Software Engineer</h4>
-                  <div class="timeline-role">Brainvire Infotech Inc.</div>
-                </div>
-              </div>
-              <div class="date-pill">Jun 2023 - Aug 2025</div>
-            </div>
-
-            <div class="card-meta-tags">
-              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Mumbai, Maharashtra</span>
+            <div class="company-name">Ksolves India Pvt. Ltd.</div>
+            <div class="career-date-tag">Nov 2025 - Jul 2026</div>
+            
+            <div class="location-cluster">
+              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Indore, MP</span>
               <span class="badge-mode"><i class="fa-solid fa-laptop-house"></i> Hybrid</span>
             </div>
+          </div>
 
-            <ul>
-              <li>Architected and optimized backend functionalities across Odoo versions 16, 17, and 18 for international enterprise clients.</li>
-              <li>Spearheaded version migrations and third-party API integrations, ensuring zero business disruption and maximal reliability.</li>
-              <li>Engineered custom QWeb reporting solutions and business dashboards to empower stakeholders with tailored actionable insights.</li>
+          <div class="career-detail-col">
+            <div class="role-header-row">
+              <h3 class="role-title">Software Engineer</h3>
+              <span class="status-pill">Full-Time</span>
+            </div>
+
+            <ul class="accomplishment-list">
+              <li><strong>Techno-Functional Bridge:</strong> United cross-functional teams through end-to-end requirement workshops, business process mapping, and bespoke Odoo implementations.</li>
+              <li><strong>Roadmap & Documentation:</strong> Authored comprehensive BRDs (Business Requirement Documents), Functional Specification Documents (FSD), and Work Breakdown Structure (WBS) effort estimations.</li>
+              <li><strong>ROI Optimization:</strong> Balanced out-of-the-box standard Odoo modules against targeted custom development to eliminate technical debt and future-proof version upgrades.</li>
             </ul>
+
+            <div class="tag-row">
+              <span class="pipeline-chip">Odoo v18 to v19</span>
+              <span class="pipeline-chip">BRD Scoping</span>
+              <span class="pipeline-chip">Functional Architecture</span>
+              <span class="pipeline-chip">Community & Enterprise</span>
+              <span class="pipeline-chip">Odoo Customization</span>
+              <span class="pipeline-chip">Effort Estimation</span>
+              <span class="pipeline-chip">Product Development</span>
+            </div>
           </div>
         </div>
 
-        <!-- Role 4: Pingaksh -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="card-top-row">
-              <div class="org-header">
-                <div class="org-logo-frame">
-                  <img src="https://www.google.com/s2/favicons?domain=pingakshtechnologies.com&sz=128" alt="Pingaksh" onerror="this.parentElement.innerHTML='<span class=\'org-monogram\'>PT</span>'">
-                </div>
-                <div class="org-title-block">
-                  <h4>Junior Software Engineer</h4>
-                  <div class="timeline-role">Pingaksh Technologies</div>
-                </div>
-              </div>
-              <div class="date-pill">Jan 2023 - Jun 2023</div>
+        <!-- Role 3: Brainvire (Animates Left) -->
+        <div class="career-node anim-left">
+          <div class="career-entity-col">
+            <div class="corp-logo-wrap">
+              <img src="https://www.google.com/s2/favicons?domain=brainvire.com&sz=128" alt="Brainvire" onerror="this.parentElement.innerHTML='<span class=\'corp-monogram\'>BV</span>'">
+            </div>
+            <div class="company-name">Brainvire Infotech Inc.</div>
+            <div class="career-date-tag">Jun 2023 - Aug 2025</div>
+            
+            <div class="location-cluster">
+              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Mumbai, MH</span>
+              <span class="badge-mode"><i class="fa-solid fa-laptop-house"></i> Hybrid</span>
+            </div>
+          </div>
+
+          <div class="career-detail-col">
+            <div class="role-header-row">
+              <h3 class="role-title">Software Engineer</h3>
+              <span class="status-pill">Full-Time</span>
             </div>
 
-            <div class="card-meta-tags">
-              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Udaipur, Rajasthan</span>
+            <ul class="accomplishment-list">
+              <li><strong>Multi-Version Development:</strong> Architected scalable backend models across Odoo v16, v17, and v18 for enterprise clients across USA, Singapore, and Canada.</li>
+              <li><strong>Seamless Upgrades & APIs:</strong> Spearheaded complex schema migrations from legacy Odoo v14/15 to v18, including bi-directional Adobe Commerce/Magento connectors.</li>
+              <li><strong>Reporting Engines:</strong> Engineered dynamic QWeb PDF documents, portal customizations, and executive reporting dashboards.</li>
+            </ul>
+
+            <div class="tag-row">
+              <span class="pipeline-chip">Odoo v15 to v18</span>
+              <span class="pipeline-chip">REST APIs</span>
+              <span class="pipeline-chip">Enterprise</span>
+              <span class="pipeline-chip">Adobe Magento Sync</span>
+              <span class="pipeline-chip">QWeb Reports</span>
+              <span class="pipeline-chip">Integrations</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Role 4: Pingaksh (Animates Right) -->
+        <div class="career-node anim-right">
+          <div class="career-entity-col">
+            <div class="corp-logo-wrap">
+              <img src="https://www.google.com/s2/favicons?domain=pingakshtechnologies.com&sz=128" alt="Pingaksh" onerror="this.parentElement.innerHTML='<span class=\'corp-monogram\'>PT</span>'">
+            </div>
+            <div class="company-name">Pingaksh Technologies</div>
+            <div class="career-date-tag">Jan 2023 - Jun 2023</div>
+            
+            <div class="location-cluster">
+              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Udaipur, RJ</span>
               <span class="badge-mode" style="color: #017E84; background: rgba(1, 126, 132, 0.12);"><i class="fa-solid fa-building"></i> Onsite</span>
             </div>
+          </div>
 
-            <ul>
-              <li>Delivered digital workflow automation solutions for European clients (Denmark) leveraging Microsoft SharePoint, Power Automate, and the Power Platform ecosystem.</li>
+          <div class="career-detail-col">
+            <div class="role-header-row">
+              <h3 class="role-title">Junior Software Engineer</h3>
+              <span class="status-pill">Workflow Automation</span>
+            </div>
+
+            <ul class="accomplishment-list">
+              <li>Engineered digital workflow automation solutions for European enterprise clients (Denmark) utilizing Microsoft SharePoint, Power Automate, and the Power Platform ecosystem.</li>
             </ul>
+
+            <div class="tag-row">
+              <span class="pipeline-chip">Microsoft SharePoint</span>
+              <span class="pipeline-chip">Power Automate</span>
+              <span class="pipeline-chip">Power Platform</span>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- ================= 6. PROJECTS SECTION ================= -->
-  <section id="projects" style="background: var(--bg-surface);" class="reveal">
+  <section id="projects" style="background: var(--bg-surface);">
     <div class="container">
-      <h2 class="section-title">Featured Projects</h2>
-      <p class="section-subtitle">Real-world enterprise integrations, migrations, and customized ERP systems</p>
+      <h2 class="section-title anim-up">Featured Projects</h2>
+      <p class="section-subtitle anim-up">Real-world enterprise integrations, migrations, and customized ERP solutions</p>
 
       <div class="project-grid" id="projectContainer"></div>
 
-      <!-- Pagination Controls -->
-      <div class="pagination-bar">
+      <div class="pagination-bar anim-up">
         <button class="page-nav-btn" id="prevBtn" onclick="changePage(-1)" title="Previous Projects">
           <i class="fa-solid fa-chevron-left"></i>
         </button>
@@ -1400,96 +2258,75 @@
     </div>
   </section>
 
-  <!-- ================= 7. EDUCATION SECTION ================= -->
-  <section id="education" class="reveal">
+  <!-- ================= 7. EDUCATION SECTION (WITH RYANGROUP.COM & LOGOS) ================= -->
+  <section id="education">
     <div class="container">
-      <h2 class="section-title">Education Credentials</h2>
-      <p class="section-subtitle">Academic foundations in Computer Science and Engineering</p>
+      <h2 class="section-title anim-up">Education Credentials</h2>
+      <p class="section-subtitle anim-up">Formal computer science foundations and academic qualifications</p>
 
-      <div class="timeline">
-        <!-- University -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="card-top-row">
-              <div class="org-header">
-                <div class="org-logo-frame">
-                  <img src="https://www.google.com/s2/favicons?domain=marwadiuniversity.ac.in&sz=128" alt="Marwadi University" onerror="this.parentElement.innerHTML='<span class=\'org-monogram\'>MU</span>'">
-                </div>
-                <div class="org-title-block">
-                  <h4>Bachelor of Technology in Computer Science (AI)</h4>
-                  <div class="timeline-role">Marwadi University</div>
-                </div>
-              </div>
-              <div class="date-pill">2019 - 2023</div>
-            </div>
-
-            <div class="card-meta-tags">
-              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Rajkot, Gujarat</span>
-            </div>
-
-            <p style="color: var(--text-muted); font-size: 0.95rem;">
-              Focused on Artificial Intelligence, Data Structures, Relational Database Management Systems, and Object-Oriented Software Architecture.
+      <div class="education-pipeline">
+        
+        <!-- B.Tech Degree (Animates Left) -->
+        <div class="edu-node btech anim-left">
+          <div class="edu-logo-frame">
+            <img src="https://www.google.com/s2/favicons?domain=marwadiuniversity.ac.in&sz=128" alt="Marwadi University" onerror="this.parentElement.innerHTML='<span class=\'edu-monogram\'>MU</span>'">
+          </div>
+          <div class="edu-detail">
+            <h3>Bachelors of Technology - Computer Science (AI)</h3>
+            <div class="edu-institution"><i class="fa-solid fa-building-columns"></i> Marwadi University</div>
+            <p class="edu-desc">
+              Curriculum focused in Artificial Intelligence, Relational Databases (PostgreSQL), Advanced Data Structures, and Object-Oriented Software Architecture.
             </p>
           </div>
-        </div>
-
-        <!-- Senior Secondary -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="card-top-row">
-              <div class="org-header">
-                <div class="org-logo-frame">
-                  <img src="https://www.google.com/s2/favicons?domain=ryaninternational.org&sz=128" alt="Ryan International" onerror="this.parentElement.innerHTML='<span class=\'org-monogram\'>RIS</span>'">
-                </div>
-                <div class="org-title-block">
-                  <h4>Senior Secondary Certificate (CBSE)</h4>
-                  <div class="timeline-role">Ryan International School</div>
-                </div>
-              </div>
-              <div class="date-pill">2018 - 2019</div>
-            </div>
-
-            <div class="card-meta-tags">
-              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Udaipur, Rajasthan</span>
-            </div>
+          <div class="edu-side-meta">
+            <span class="date-badge" style="color: var(--odoo-teal); border-color: rgba(0, 160, 157, 0.3);">2019 - 2023</span>
+            <span class="badge-loc" style="font-size: 0.78rem;"><i class="fa-solid fa-award"></i> Rajkot, GJ</span>
           </div>
         </div>
 
-        <!-- Secondary -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="card-top-row">
-              <div class="org-header">
-                <div class="org-logo-frame">
-                  <img src="https://www.google.com/s2/favicons?domain=ryaninternational.org&sz=128" alt="Ryan International" onerror="this.parentElement.innerHTML='<span class=\'org-monogram\'>RIS</span>'">
-                </div>
-                <div class="org-title-block">
-                  <h4>Secondary School Certificate (CBSE)</h4>
-                  <div class="timeline-role">Ryan International School</div>
-                </div>
-              </div>
-              <div class="date-pill">2016 - 2017</div>
-            </div>
-
-            <div class="card-meta-tags">
-              <span class="badge-loc"><i class="fa-solid fa-location-dot"></i> Udaipur, Rajasthan</span>
-            </div>
+        <!-- Class XII (Animates Right) -->
+        <div class="edu-node anim-right">
+          <div class="edu-logo-frame">
+            <img src="https://www.google.com/s2/favicons?domain=ryangroup.org&sz=128" alt="Ryan International School" onerror="this.parentElement.innerHTML='<span class=\'edu-monogram\'>RIS</span>'">
+          </div>
+          <div class="edu-detail">
+            <h3>Senior Secondary Certificate - CBSE</h3>
+            <div class="edu-institution"><i class="fa-solid fa-school"></i> Ryan International School</div>
+            <p class="edu-desc">Higher secondary curriculum focused on Physics, Chemistry, and Mathematics (PCM stream).</p>
+          </div>
+          <div class="edu-side-meta">
+            <span class="date-badge">2018 - 2019</span>
+            <span class="badge-loc" style="font-size: 0.78rem;">Udaipur, RJ</span>
           </div>
         </div>
+
+        <!-- Class X (Animates Left) -->
+        <div class="edu-node anim-left">
+          <div class="edu-logo-frame">
+            <img src="https://www.google.com/s2/favicons?domain=ryangroup.org&sz=128" alt="Ryan International School" onerror="this.parentElement.innerHTML='<span class=\'edu-monogram\'>RIS</span>'">
+          </div>
+          <div class="edu-detail">
+            <h3>Secondary Certificate - CBSE</h3>
+            <div class="edu-institution"><i class="fa-solid fa-school"></i> Ryan International School</div>
+            <p class="edu-desc">Secondary school education with high distinction across Science, Mathematics, and Computer Applications.</p>
+          </div>
+          <div class="edu-side-meta">
+            <span class="date-badge">2016 - 2017</span>
+            <span class="badge-loc" style="font-size: 0.78rem;">Udaipur, RJ</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ================= 8. CONTACT ME SECTION (LIVE FORMSPREE) ================= -->
-  <section id="contact" style="background: var(--bg-surface);" class="reveal">
+  <!-- ================= 8. CONTACT SECTION ================= -->
+  <section id="contact" style="background: var(--bg-surface);">
     <div class="container">
-      <h2 class="section-title">Contact Me</h2>
-      <p class="section-subtitle">Let's discuss your next Odoo implementation or technical requirement</p>
+      <h2 class="section-title anim-up">Contact Me</h2>
+      <p class="section-subtitle anim-up">Let's discuss your next Odoo implementation or technical requirement</p>
 
-      <div class="contact-wrapper">
+      <div class="contact-wrapper anim-zoom">
         <form id="contactForm" action="https://formspree.io/f/xgaezyla" method="POST">
           <div class="form-group">
             <label for="name">Your Name</label>
@@ -1517,36 +2354,43 @@
     </div>
   </section>
 
-  <!-- ================= FOOTER ================= -->
+  <!-- ================= FOOTER (100% IDENTICAL LOGO) ================= -->
   <footer>
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <a href="#home" class="brand-logo" style="margin-bottom: 1rem;">
-            <div class="logo-symbol" style="width: 32px; height: 32px;">
+          <a href="#home" class="brand-logo" style="margin-bottom: 1.2rem;">
+            <div class="logo-symbol">
               <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100" height="100" rx="22" fill="url(#logo-grad-ft)"/>
-                <path d="M30 32L48 50L30 68" stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M54 68H72" stroke="#017E84" stroke-width="8" stroke-linecap="round"/>
                 <defs>
-                  <linearGradient id="logo-grad-ft" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#714B67"/>
-                    <stop offset="1" stop-color="#1e2433"/>
+                  <linearGradient id="logo-mesh-footer" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#8b557d" />
+                    <stop offset="100%" stop-color="#00a09d" />
+                  </linearGradient>
+                  <linearGradient id="stroke-grad-footer" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#00a09d" />
+                    <stop offset="100%" stop-color="#ffffff" />
                   </linearGradient>
                 </defs>
+                <rect x="5" y="5" width="90" height="90" rx="24" fill="#0d111a" stroke="url(#logo-mesh-footer)" stroke-width="3" />
+                <path d="M30 28H46C56 28 62 34 62 43C62 52 56 58 46 58H30V28Z" stroke="url(#stroke-grad-footer)" stroke-width="5" stroke-linejoin="round" />
+                <path d="M42 28V58" stroke="url(#logo-mesh-footer)" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+                <path d="M30 72L44 72" stroke="#00a09d" stroke-width="6" stroke-linecap="round" />
+                <circle cx="56" cy="72" r="3.5" fill="#f59e0b" />
               </svg>
             </div>
             <div class="logo-text-block">
-              <span class="logo-name" style="font-size: 1.05rem;">Devansh Agrawal</span>
-              <span class="logo-role">Techno-Functional Odoo Consultant</span>
+              <span class="logo-name" style="font-size: 1.08rem;">Devansh Agrawal</span>
             </div>
           </a>
           <p>
-            Techno-Functional Odoo Consultant & Software Engineer delivering scalable ERP architecture, integrations, and performance engineering.
+            Techno-Functional Odoo Consultant delivering scalable ERP architectures, API integrations, and workflow engineering.
           </p>
           <div class="footer-social-links">
-            <a href="https://github.com" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://wa.me/919001140690" target="_blank" class="social-btn wa" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
             <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-btn ig" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://github.com" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
             <a href="mailto:devanshagrawaludp@gmail.com" class="social-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
           </div>
         </div>
@@ -1556,7 +2400,7 @@
           <ul class="footer-contacts" style="list-style: none;">
             <li><a href="#home">Home</a></li>
             <li><a href="#profile">About Me</a></li>
-            <li><a href="#skills">Skills & Toolkit</a></li>
+            <li><a href="#skills">Skills & Ecosystem</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Enterprise Projects</a></li>
             <li><a href="#education">Education</a></li>
@@ -1564,18 +2408,18 @@
         </div>
 
         <div class="footer-col">
-          <h4>Direct Contact</h4>
+          <h4>Direct Connect</h4>
           <ul class="footer-contacts">
             <li><i class="fa-solid fa-envelope"></i> devanshagrawaludp@gmail.com</li>
-            <li><i class="fa-solid fa-phone"></i> +91 90011 40690</li>
+            <li><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> +91 90011 40690</li>
             <li><i class="fa-solid fa-location-dot"></i> Udaipur, Rajasthan / Pune, India</li>
-            <li><i class="fa-solid fa-briefcase"></i> Open for Consulting & Full-time</li>
+            <li><i class="fa-solid fa-briefcase"></i> Open for Consulting</li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Devansh Agrawal. Built for the Odoo & Python Ecosystem.</p>
+        <p>&copy; 2026 Devansh Agrawal. Engineered for the Odoo & Python Ecosystem.</p>
       </div>
     </div>
   </footer>
@@ -1583,16 +2427,104 @@
   <!-- ================= JAVASCRIPT ================= -->
   <script>
     /* -------------------------------------------
-       RESUME-DRIVEN PROJECTS DATABASE
+       1. BIDIRECTIONAL SCROLL-REVEAL OBSERVER
+    ------------------------------------------- */
+    const progressBar = document.getElementById('scrollProgressBar');
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      progressBar.style.width = scrolled + '%';
+    });
+
+    const animElements = document.querySelectorAll('.anim-up, .anim-left, .anim-right, .anim-zoom');
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        } else {
+          entry.target.classList.remove('active');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -40px 0px"
+    });
+
+    animElements.forEach(el => scrollObserver.observe(el));
+
+    /* -------------------------------------------
+       2. REVERSIBLE NUMERICAL KPI COUNTER
+    ------------------------------------------- */
+    let counterRunning = false;
+    function animateCounters() {
+      const counters = document.querySelectorAll('.stat-number');
+      const duration = 1800;
+
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const startTime = performance.now();
+
+        function updateCount(currentTime) {
+          const elapsedTime = currentTime - startTime;
+          const progress = Math.min(elapsedTime / duration, 1);
+          const easeOut = 1 - (1 - progress) * (1 - progress);
+          const currentVal = Math.floor(easeOut * target);
+
+          counter.innerText = currentVal;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCount);
+          } else {
+            counter.innerText = target;
+          }
+        }
+        requestAnimationFrame(updateCount);
+      });
+    }
+
+    const statsBar = document.getElementById('statsContainer');
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (!counterRunning) {
+            animateCounters();
+            counterRunning = true;
+          }
+        } else {
+          counterRunning = false;
+          document.querySelectorAll('.stat-number').forEach(c => c.innerText = '0');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    if (statsBar) statsObserver.observe(statsBar);
+
+    /* -------------------------------------------
+       3. INTERACTIVE MOUSE GLOW LIGHT
+    ------------------------------------------- */
+    const glow = document.getElementById('cursorGlow');
+    window.addEventListener('mousemove', (e) => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+
+    /* -------------------------------------------
+       4. RESUME PROJECTS WITH REAL TECH ICONS
     ------------------------------------------- */
     const allProjects = [
       {
         title: "Odoo-Magento Bi-Directional Integration",
         badge: "Odoo 18 / REST API",
         icon: "fa-solid fa-cart-shopping",
-        client: "In-House Enterprise Solution",
+        client: "Client: In-House Enterprise Solution",
         desc: "<ul><li>Engineered REST APIs enabling real-time bidirectional synchronization between Odoo and Magento.</li><li>Automated real-time data flows for inventory, product catalogs, customer data, and sales orders.</li><li>Conducted performance profiling and throughput optimization for high-volume transactions.</li></ul>",
-        tech: ["Odoo 18", "Magento", "REST API", "Python"]
+        tech: [
+          { name: "Odoo 18", icon: "fa-solid fa-cubes" },
+          { name: "Magento", icon: "fa-brands fa-magento" },
+          { name: "REST API", icon: "fa-solid fa-network-wired" },
+          { name: "Python", icon: "fa-brands fa-python" }
+        ]
       },
       {
         title: "Store Credit & Financial Sync Platform",
@@ -1600,7 +2532,12 @@
         icon: "fa-solid fa-credit-card",
         client: "Client: USA • Retail Industry",
         desc: "<ul><li>Integrated Magento's native store credit system directly into Odoo financial accounts.</li><li>Enabled automated real-time reconciliation for customer orders, refunds, and ledger balances.</li><li>Designed optimized custom credit transaction workflows with complete audit trail visibility.</li></ul>",
-        tech: ["Odoo 17", "Magento", "Python", "Accounting"]
+        tech: [
+          { name: "Odoo 17", icon: "fa-solid fa-cubes" },
+          { name: "Magento", icon: "fa-brands fa-magento" },
+          { name: "Python", icon: "fa-brands fa-python" },
+          { name: "Accounting", icon: "fa-solid fa-calculator" }
+        ]
       },
       {
         title: "Luxury Fashion Multi-Platform Connector",
@@ -1608,7 +2545,12 @@
         icon: "fa-solid fa-shirt",
         client: "Client: Singapore • Luxury Fashion Retail",
         desc: "<ul><li>Developed end-to-end Odoo-Adobe synchronization pipeline including customer tier memberships.</li><li>Programmed complex business restriction logic and multi-tier pricing rules in Odoo.</li><li>Maintained real-time data consistency across distributed international retail channels.</li></ul>",
-        tech: ["Odoo 18", "Magento / Adobe", "Python", "Security Rules"]
+        tech: [
+          { name: "Odoo 18", icon: "fa-solid fa-cubes" },
+          { name: "Adobe / Magento", icon: "fa-brands fa-magento" },
+          { name: "Python", icon: "fa-brands fa-python" },
+          { name: "Security Rules", icon: "fa-solid fa-shield-halved" }
+        ]
       },
       {
         title: "POS & Retail Backend Customization",
@@ -1616,23 +2558,38 @@
         icon: "fa-solid fa-cash-register",
         client: "Client: USA • Retail Industry",
         desc: "<ul><li>Customized Odoo Point of Sale UI and backend reporting to match client operational workflows.</li><li>Built reactive POS custom components using JavaScript and backend Python ORM handlers.</li><li>Integrated third-party hardware peripherals and enhanced retail checkout speed.</li></ul>",
-        tech: ["Odoo 16", "POS", "JavaScript", "Python"]
+        tech: [
+          { name: "Odoo 16", icon: "fa-solid fa-cubes" },
+          { name: "POS", icon: "fa-solid fa-cash-register" },
+          { name: "JavaScript", icon: "fa-brands fa-js" },
+          { name: "Python", icon: "fa-brands fa-python" }
+        ]
       },
       {
         title: "Enterprise Odoo Version Migration",
         badge: "v14/15 → v18",
         icon: "fa-solid fa-database",
-        client: "In-House System Upgrade",
+        client: "Client: In-House System Upgrade",
         desc: "<ul><li>Migrated core business models and custom modules from Odoo 14/15 to Odoo 18.</li><li>Refactored legacy codebases to ensure backward compatibility and continuous uptime.</li><li>Executed data migration scripts and validated database schema consistency.</li></ul>",
-        tech: ["Odoo 14-18", "Python", "PostgreSQL", "Data Migration"]
+        tech: [
+          { name: "Odoo 14-18", icon: "fa-solid fa-cubes" },
+          { name: "Python", icon: "fa-brands fa-python" },
+          { name: "PostgreSQL", icon: "fa-solid fa-database" },
+          { name: "Data Migration", icon: "fa-solid fa-arrow-right-arrow-left" }
+        ]
       },
       {
-        title: "Custom Diamond Industry QWeb & Portal Engine",
+        title: "Diamond Industry QWeb & Portal Engine",
         badge: "Odoo 17 / Customization",
         icon: "fa-solid fa-gem",
         client: "Client: USA & Canada • Diamond Industry",
         desc: "<ul><li>Engineered dynamic backend QWeb reporting templates tailored for diamond industry compliance.</li><li>Implemented bespoke customer-facing portal and website customizations.</li><li>Refactored data models to handle multi-attribute grading specifications and certificates.</li></ul>",
-        tech: ["Odoo 17", "QWeb", "Python", "Website Builder"]
+        tech: [
+          { name: "Odoo 17", icon: "fa-solid fa-cubes" },
+          { name: "QWeb", icon: "fa-solid fa-file-invoice" },
+          { name: "Python", icon: "fa-brands fa-python" },
+          { name: "Website Builder", icon: "fa-solid fa-globe" }
+        ]
       }
     ];
 
@@ -1646,17 +2603,17 @@
       const totalProjects = allProjects.length;
 
       const container = document.getElementById("projectContainer");
-      container.innerHTML = visibleProjects.map(p => `
-        <div class="project-card">
+      container.innerHTML = visibleProjects.map((p, index) => `
+        <div class="project-card ${index % 2 === 0 ? 'anim-left' : 'anim-right'}">
           <div class="project-meta">
-            <span class="badge">${p.badge}</span>
-            <i class="${p.icon}" style="color: var(--odoo-teal);"></i>
+            <span class="badge badge-teal">${p.badge}</span>
+            <i class="${p.icon}" style="color: var(--odoo-teal); font-size: 1.25rem;"></i>
           </div>
           <h3 class="project-title">${p.title}</h3>
           <div class="project-client-tag">${p.client}</div>
           <div class="project-desc">${p.desc}</div>
           <div class="tech-stack-pills">
-            ${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
+            ${p.tech.map(t => `<span class="tech-pill"><i class="${t.icon}"></i> ${t.name}</span>`).join('')}
           </div>
         </div>
       `).join('');
@@ -1665,6 +2622,8 @@
       document.getElementById("paginationInfo").innerText = `${start + 1}-${displayedEnd} of ${totalProjects}`;
       document.getElementById("prevBtn").disabled = (currentPage === 1);
       document.getElementById("nextBtn").disabled = (end >= totalProjects);
+
+      container.querySelectorAll('.anim-left, .anim-right').forEach(el => scrollObserver.observe(el));
     }
 
     function changePage(delta) {
@@ -1675,13 +2634,13 @@
     renderProjects();
 
     /* -------------------------------------------
-       LIVE TYPEWRITER ENGINE
+       5. TYPEWRITER EFFECT
     ------------------------------------------- */
     const phrases = [
       "Techno-Functional Odoo Consultant",
-      "Python Developer",
-      "API & Integration Specialist",
-      "Odoo 15+ Migration Engineer"
+      "Python Software Engineer",
+      "Odoo v16 - v19 Specialist",
+      "API & Workflow Architect"
     ];
     let phraseIndex = 0;
     let charIndex = 0;
@@ -1714,50 +2673,60 @@
     type();
 
     /* -------------------------------------------
-       SCROLL & THEME HANDLERS
+       6. THEME TOGGLE
     ------------------------------------------- */
-    function revealOnScroll() {
-      const reveals = document.querySelectorAll('.reveal');
-      const windowHeight = window.innerHeight;
-      reveals.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-        if (elementTop < windowHeight - 90) {
-          el.classList.add('active');
-        }
-      });
-    }
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
-
     const themeToggleBtn = document.getElementById('themeToggle');
     const htmlEl = document.documentElement;
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    htmlEl.setAttribute('data-theme', currentTheme);
-    updateIcon(currentTheme);
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    htmlEl.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
 
     themeToggleBtn.addEventListener('click', () => {
       const activeTheme = htmlEl.getAttribute('data-theme');
       const nextTheme = activeTheme === 'light' ? 'dark' : 'light';
       htmlEl.setAttribute('data-theme', nextTheme);
       localStorage.setItem('theme', nextTheme);
-      updateIcon(nextTheme);
+      updateThemeIcon(nextTheme);
     });
 
-    function updateIcon(theme) {
+    function updateThemeIcon(theme) {
       themeToggleBtn.innerHTML = theme === 'dark' 
-        ? '<i class="fa-solid fa-sun" style="color: #f1c40f;"></i>' 
-        : '<i class="fa-solid fa-moon"></i>';
+        ? '<i class="fa-solid fa-sun" style="color: #f59e0b;"></i>' 
+        : '<i class="fa-solid fa-moon" style="color: #714B67;"></i>';
     }
 
+    /* -------------------------------------------
+       7. MOBILE NAVBAR CONTROLLER (SCROLL LOCK)
+    ------------------------------------------- */
     const mobileToggle = document.getElementById('mobileToggle');
     const navLinks = document.getElementById('navLinks');
-    mobileToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+    const toggleIcon = mobileToggle.querySelector('i');
+
+    function toggleMenu() {
+      const isOpen = navLinks.classList.toggle('active');
+      if (isOpen) {
+        toggleIcon.classList.remove('fa-bars');
+        toggleIcon.classList.add('fa-xmark');
+        document.body.style.overflow = 'hidden';
+      } else {
+        toggleIcon.classList.remove('fa-xmark');
+        toggleIcon.classList.add('fa-bars');
+        document.body.style.overflow = '';
+      }
+    }
+
+    mobileToggle.addEventListener('click', toggleMenu);
+
     document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('active'));
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+          toggleMenu();
+        }
+      });
     });
 
     /* -------------------------------------------
-       LIVE EMAIL DISPATCH HANDLER (FORMSPREE)
+       8. LIVE FORMSPREE SUBMISSION
     ------------------------------------------- */
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
