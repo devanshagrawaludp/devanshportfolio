@@ -3,13 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Devansh Agrawal | Techno-Functional Odoo Consultant & Software Engineer</title>
+  <title>Devansh Agrawal | Odoo</title>
   
   <!-- Premium Fonts: Space Grotesk + Plus Jakarta Sans + Fira Code -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- UNIVERSAL LOGO FALLBACK ENGINE -->
+  <script>
+    function renderFallbackLogo(imgElement, domain, initials) {
+      if (!imgElement.dataset.stage) {
+        imgElement.dataset.stage = "1";
+        imgElement.src = "https://www.google.com/s2/favicons?domain=" + domain + "&sz=128";
+      } else if (imgElement.dataset.stage === "1") {
+        imgElement.dataset.stage = "2";
+        imgElement.style.display = "none";
+        const parent = imgElement.parentElement;
+        if (parent && !parent.querySelector('.corp-monogram')) {
+          const badge = document.createElement('span');
+          badge.className = 'corp-monogram';
+          badge.textContent = initials || 'NA';
+          parent.appendChild(badge);
+        }
+      }
+    }
+  </script>
 
   <style>
     /* -------------------------------------------
@@ -196,9 +216,7 @@
       100% { transform: translateY(18px) translateX(-14px) rotate(-6deg); }
     }
 
-    /* -------------------------------------------
-       BIDIRECTIONAL DIRECTIONAL ANIMATIONS
-    ------------------------------------------- */
+    /* Directional Animations */
     .anim-up {
       opacity: 0;
       transform: translateY(45px);
@@ -276,7 +294,6 @@
       flex-shrink: 0;
     }
     .brand-logo:hover .logo-symbol { transform: rotate(6deg); }
-
     .logo-symbol svg { width: 100%; height: 100%; filter: drop-shadow(0 0 10px rgba(0, 160, 157, 0.4)); }
     .logo-text-block { display: flex; flex-direction: column; line-height: 1.15; }
 
@@ -285,15 +302,6 @@
       font-size: 1.15rem;
       letter-spacing: -0.3px;
       color: var(--text-main);
-      white-space: nowrap;
-    }
-
-    .logo-role {
-      font-family: 'Fira Code', monospace;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--odoo-teal);
-      letter-spacing: 0.3px;
       white-space: nowrap;
     }
 
@@ -363,6 +371,17 @@
       align-items: center;
       justify-content: center;
       z-index: 1002;
+    }
+
+    /* Mobile Drawer Actions Panel */
+    .mobile-drawer-actions {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-top: 1.2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid var(--border-color);
     }
 
     /* -------------------------------------------
@@ -629,7 +648,7 @@
     .comm { color: #5c6370; font-style: italic; }
 
     /* -------------------------------------------
-       NUMERICAL KPI COUNTER BAR (5 COLUMNS SINGLE ROW)
+       NUMERICAL KPI COUNTER BAR (6 COLUMNS)
     ------------------------------------------- */
     .stats-bar-wrapper {
       margin: 1.5rem auto 3.5rem auto;
@@ -637,8 +656,8 @@
 
     .stats-bar {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0.8rem;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.6rem;
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 18px;
@@ -668,7 +687,7 @@
     .stat-item {
       text-align: center;
       position: relative;
-      padding: 0.25rem 0.5rem;
+      padding: 0.25rem 0.4rem;
     }
 
     .stat-item:not(:last-child)::after {
@@ -689,21 +708,21 @@
     }
 
     .stat-number {
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       font-weight: 800;
       color: var(--text-main);
       line-height: 1;
     }
 
     .stat-plus {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: var(--odoo-teal);
       line-height: 1;
     }
 
     .stat-label {
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       color: var(--text-muted);
       font-weight: 600;
       margin-top: 0.5rem;
@@ -720,7 +739,7 @@
     .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 3.2rem; font-size: 1.02rem; }
 
     /* -------------------------------------------
-       ABOUT SECTION (BENTO GRID WITH CLEAN UNBOXED PROFILE)
+       ABOUT SECTION
     ------------------------------------------- */
     .bento-grid {
       display: grid;
@@ -819,7 +838,6 @@
     .bento-profile h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.3rem; }
     .bento-profile .role-tagline { font-size: 0.85rem; color: var(--odoo-teal); font-weight: 600; font-family: 'Fira Code', monospace; margin-bottom: 1.1rem; }
 
-    /* Full-Width Meta Row Badges (No Clipping) */
     .profile-meta-list {
       width: 100%;
       display: flex;
@@ -867,7 +885,6 @@
       margin-left: auto;
     }
 
-    /* Clean Unboxed Hobbies Section */
     .profile-simple-hobbies {
       width: 100%;
       display: flex;
@@ -1008,7 +1025,274 @@
     .bento-mini-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.55; }
 
     /* -------------------------------------------
-       SKILLS MATRIX (FULL-WIDTH 4TH CARD ON DESKTOP)
+       SERVICES & CONSULTING OFFERINGS
+    ------------------------------------------- */
+    .services-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--odoo-primary), var(--odoo-teal));
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .service-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-6px);
+      background: var(--bg-card-hover);
+      box-shadow: 0 20px 45px rgba(0, 160, 157, 0.2);
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon-wrap {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: var(--badge-teal-bg);
+      color: var(--odoo-teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0, 160, 157, 0.25);
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover .service-icon-wrap {
+      transform: scale(1.1) rotate(6deg);
+      background: var(--odoo-teal);
+      color: #fff;
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.85rem;
+      line-height: 1.3;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.6rem;
+      flex-grow: 1;
+    }
+
+    .service-deliverables {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .service-chip {
+      font-size: 0.76rem;
+      font-family: 'Fira Code', monospace;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      color: var(--text-muted);
+    }
+
+    .service-link {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--odoo-teal);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: var(--transition);
+      margin-top: auto;
+    }
+    .service-link:hover {
+      color: var(--odoo-primary-light);
+      transform: translateX(4px);
+    }
+
+    /* -------------------------------------------
+       HORIZONTAL WAVY METHODOLOGY (NO NUMBERS - CLEAN ICONS & LABELS)
+    ------------------------------------------- */
+    .methodology-sub {
+      margin-top: 4.5rem;
+      padding-top: 3.5rem;
+      border-top: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .methodology-header {
+      text-align: center;
+      margin-bottom: 2.2rem;
+    }
+
+    .methodology-header h3 {
+      font-size: 1.65rem;
+      font-weight: 700;
+    }
+
+    .curved-pipeline-container {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Continuous Horizontal SVG Sine Wave Path */
+    .curved-svg-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .curved-path-base {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.12);
+      stroke-width: 3.5;
+      stroke-linecap: round;
+    }
+
+    .curved-path-pulse {
+      fill: none;
+      stroke: url(#line-glow-grad);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-dasharray: 100 220;
+      animation: waveFlow 5.5s linear infinite;
+      filter: drop-shadow(0 0 10px var(--odoo-teal-glow));
+    }
+
+    @keyframes waveFlow {
+      from { stroke-dashoffset: 700; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    .curved-step-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Step Node: mathematically centered on the exact column midpoint */
+    .curved-step-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      cursor: pointer;
+      justify-content: center;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 100%;
+    }
+
+    /* Subtle vertical displacement matching flattened wave height */
+    .curved-step-node:nth-child(odd) {
+      transform: translateY(-28px);
+    }
+    .curved-step-node:nth-child(even) {
+      transform: translateY(28px);
+    }
+
+    /* TOP ZONE: strictly above the line with ample clearance */
+    .step-top-zone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 26px;
+      transition: var(--transition);
+    }
+
+    .node-icon-wrap {
+      font-size: 1.85rem;
+      color: var(--text-main);
+      transition: transform 0.3s ease, color 0.3s ease;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+    }
+
+    /* BOTTOM ZONE: strictly below the line with clean line breaks */
+    .step-bottom-zone {
+      margin-top: 26px;
+      width: 100%;
+      padding: 0 0.2rem;
+      transition: var(--transition);
+      display: flex;
+      justify-content: center;
+    }
+
+    .node-title-text {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.3;
+      text-align: center;
+      letter-spacing: -0.2px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+      display: block;
+      max-width: 110px;
+      word-wrap: break-word;
+      transition: color 0.3s ease;
+    }
+
+    /* Hover elevation effects */
+    .curved-step-node:hover .step-top-zone {
+      transform: translateY(-6px);
+    }
+    .curved-step-node:hover .step-bottom-zone {
+      transform: translateY(4px);
+    }
+    .curved-step-node:hover .node-icon-wrap {
+      color: var(--odoo-teal);
+      transform: scale(1.22);
+    }
+    .curved-step-node:hover .node-title-text {
+      color: #fff;
+    }
+
+    /* Pure CSS Hardware-Accelerated Mobile Vertical Laser Line */
+    .mobile-laser-track {
+      display: none;
+    }
+
+    /* -------------------------------------------
+       SKILLS MATRIX
     ------------------------------------------- */
     .skills-matrix-grid {
       display: grid;
@@ -1116,7 +1400,7 @@
     .skill-tag-item:hover i { transform: scale(1.2); }
 
     /* -------------------------------------------
-       EXPERIENCE PIPELINE
+       EXPERIENCE & UNIVERSAL LOGO HOLDERS
     ------------------------------------------- */
     .career-pipeline {
       max-width: 960px;
@@ -1172,10 +1456,27 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       margin-bottom: 1rem;
       transition: transform 0.3s ease;
+      overflow: hidden;
+      position: relative;
     }
     .career-node:hover .corp-logo-wrap { transform: scale(1.08) rotate(3deg); }
     .corp-logo-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
-    .corp-monogram { font-weight: 800; font-size: 1.1rem; color: var(--odoo-primary); }
+
+    /* Universal Corporate Monogram Badge */
+    .corp-monogram { 
+      font-weight: 800; 
+      font-size: 1.05rem; 
+      color: #ffffff;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--odoo-primary), var(--odoo-teal));
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
 
     .company-name {
       font-size: 1.12rem;
@@ -1315,7 +1616,7 @@
     }
 
     /* -------------------------------------------
-       EDUCATION SECTION (WITH INSTITUTION LOGOS)
+       EDUCATION SECTION
     ------------------------------------------- */
     .education-pipeline {
       max-width: 960px;
@@ -1361,10 +1662,11 @@
       padding: 8px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
+      overflow: hidden;
+      position: relative;
     }
     .edu-node:hover .edu-logo-frame { transform: scale(1.08) rotate(3deg); }
     .edu-logo-frame img { max-width: 100%; max-height: 100%; object-fit: contain; }
-    .edu-monogram { font-weight: 800; font-size: 1.25rem; color: var(--odoo-primary); }
 
     .edu-detail h3 {
       font-size: 1.3rem;
@@ -1395,7 +1697,7 @@
     }
 
     /* -------------------------------------------
-       PROJECTS SECTION (WITH TECH ICONS)
+       PROJECTS SECTION
     ------------------------------------------- */
     .project-grid {
       display: grid;
@@ -1550,7 +1852,7 @@
     .form-status.error { display: block; background: rgba(239, 68, 68, 0.12); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.25); }
 
     /* -------------------------------------------
-       FOOTER (WITH IDENTICAL LOGO)
+       FOOTER
     ------------------------------------------- */
     footer {
       background: var(--bg-surface);
@@ -1576,11 +1878,10 @@
     .footer-contacts li i { color: var(--odoo-teal); width: 16px; }
 
     .footer-social-links { display: flex; gap: 0.85rem; margin-top: 1.1rem; flex-wrap: wrap; }
-
     .footer-bottom { border-top: 1px solid var(--border-color); padding-top: 2rem; text-align: center; font-size: 0.9rem; }
 
     /* -------------------------------------------
-       MOBILE & HALF-SCREEN RESPONSIVENESS FIX
+       CLEAN MOBILE NAVBAR & RESPONSIVENESS
     ------------------------------------------- */
     @media (max-width: 1240px) {
       .mobile-menu-btn { display: flex; }
@@ -1597,8 +1898,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        padding: 3.5rem 1.5rem;
-        gap: 1.8rem;
+        padding: 2.5rem 1.5rem;
+        gap: 1.3rem;
         border-bottom: none;
         box-shadow: var(--shadow);
         opacity: 0;
@@ -1611,6 +1912,9 @@
       .nav-links.active { display: flex; opacity: 1; visibility: visible; transform: translateY(0); }
       .nav-links a { font-size: 1.15rem; font-weight: 600; width: 100%; text-align: center; padding: 0.6rem 0; }
       
+      .mobile-drawer-actions { display: flex; }
+      
+      .services-grid-2 { grid-template-columns: 1fr; }
       .skills-matrix-grid { grid-template-columns: 1fr 1fr; }
       .matrix-card.full-width-desktop { grid-column: auto; }
     }
@@ -1620,9 +1924,7 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 1.2rem;
       }
-      .stat-item:nth-child(3)::after {
-        display: none;
-      }
+      .stat-item:nth-child(3)::after { display: none; }
     }
 
     @media (max-width: 980px) {
@@ -1663,26 +1965,116 @@
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     }
 
+    /* PHONE & TABLET VIEW: FULL VERTICAL GLOWING LASER LINE ANIMATION */
+    @media (max-width: 820px) {
+      .curved-pipeline-container {
+        height: auto;
+        padding: 2rem 0;
+        display: block;
+        position: relative;
+      }
+      .curved-svg-line {
+        display: none !important;
+      }
+      
+      /* Pure CSS hardware-accelerated animated glowing vertical laser line */
+      .mobile-laser-track {
+        display: block;
+        position: absolute;
+        top: 24px;
+        bottom: 24px;
+        left: 28px;
+        width: 3px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 3px;
+        z-index: 1;
+        overflow: hidden;
+      }
+      .mobile-laser-track::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 140px;
+        background: linear-gradient(180deg, transparent, var(--odoo-primary-light), var(--odoo-teal), #10b981, transparent);
+        box-shadow: 0 0 14px var(--odoo-teal);
+        animation: mobileLaserFlow 3.5s linear infinite;
+      }
+      @keyframes mobileLaserFlow {
+        0% { transform: translateY(-140px); }
+        100% { transform: translateY(600px); }
+      }
+
+      .curved-step-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2.2rem;
+        position: relative;
+        padding-left: 0;
+      }
+      .curved-step-node {
+        transform: none !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        text-align: left !important;
+        gap: 1.4rem;
+        padding-left: 12px;
+      }
+
+      .step-top-zone {
+        margin-bottom: 0 !important;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 2;
+        width: 34px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .node-icon-wrap {
+        font-size: 1.55rem;
+      }
+
+      .step-bottom-zone {
+        margin-top: 0 !important;
+        text-align: left !important;
+        justify-content: flex-start !important;
+        padding: 0;
+      }
+      .node-title-text {
+        text-align: left !important;
+        font-size: 1.02rem;
+        max-width: none !important;
+      }
+    }
+
+    /* PHONE VIEW: CLEAN LOGO & HAMBURGER ONLY ON NAV */
     @media (max-width: 768px) {
       .stats-bar {
         grid-template-columns: repeat(2, 1fr);
         padding: 1.4rem 1rem;
       }
-      .stat-item::after {
+      .stat-item::after { display: none !important; }
+
+      .nav-container { padding: 0 1rem; }
+      .nav-actions .btn-wa,
+      .nav-actions .btn-outline,
+      .nav-actions .theme-toggle-btn {
         display: none !important;
       }
-      .stat-item:last-child {
-        grid-column: 1 / -1;
-      }
+
+      .mobile-menu-btn { display: flex !important; }
+      .brand-logo { max-width: 78%; }
+      .logo-name { font-size: 1.05rem; }
     }
 
     @media (max-width: 520px) {
       .stats-bar { grid-template-columns: 1fr; gap: 1rem; }
-      .stat-item:not(:last-child)::after { display: none; }
-      .stat-number { font-size: 2.2rem; }
-      .hero-text h1 { font-size: 2.5rem; }
-      .nav-container { padding: 0 1rem; }
-      .btn-wa { display: none; }
+      .stat-number { font-size: 2rem; }
+      .hero-text h1 { font-size: 2.25rem; }
+      .curved-step-node { padding-left: 8px; }
+      .mobile-laser-track { left: 24px; }
     }
   </style>
 </head>
@@ -1744,13 +2136,28 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
         <li><a href="#profile">About</a></li>
+        <li><a href="#services">Services</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
+
+        <!-- Mobile Drawer Only: WhatsApp, Resume & Theme in Drawer -->
+        <li class="mobile-drawer-actions">
+          <a href="https://wa.me/919001140690" target="_blank" class="btn btn-wa" style="width: 100%; justify-content: center;">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp Direct
+          </a>
+          <a href="resume.pdf" download="Devansh_Agrawal_Resume.pdf" class="btn btn-outline" style="width: 100%; justify-content: center;">
+            <i class="fa-solid fa-arrow-down-to-bracket"></i> Download Resume
+          </a>
+          <button class="btn btn-outline" id="mobileThemeToggle" style="width: 100%; justify-content: center; gap: 0.5rem;">
+            <i class="fa-solid fa-sun" style="color: #f59e0b;"></i> Toggle Theme
+          </button>
+        </li>
       </ul>
 
+      <!-- Desktop Action Bar (Hidden on Mobile) -->
       <div class="nav-actions">
         <a href="https://wa.me/919001140690" target="_blank" class="btn btn-wa" style="padding: 0.45rem 0.9rem; font-size: 0.85rem;" title="Chat on WhatsApp">
           <i class="fa-brands fa-whatsapp"></i> WhatsApp
@@ -1823,9 +2230,19 @@
     </div>
   </section>
 
-  <!-- ================= NUMERICAL KPI COUNTER (5 IN SINGLE ROW) ================= -->
+  <!-- ================= NUMERICAL KPI COUNTER (DYNAMIC REAL-TIME EXPERIENCE) ================= -->
   <div class="container anim-up stats-bar-wrapper">
     <div class="stats-bar" id="statsContainer">
+      
+      <!-- DYNAMIC EXPERIENCE COUNTER -->
+      <div class="stat-item">
+        <div class="stat-number-wrap">
+          <div class="stat-number" id="experienceCounter" data-target="0">0</div>
+          <span class="stat-plus">+</span>
+        </div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+
       <div class="stat-item">
         <div class="stat-number-wrap">
           <div class="stat-number" data-target="15">0</div>
@@ -1864,14 +2281,13 @@
     </div>
   </div>
 
-  <!-- ================= 3. ABOUT / PROFILE (BENTO GRID WITH CLEAN UNBOXED HOBBIES) ================= -->
+  <!-- ================= 3. ABOUT / PROFILE ================= -->
   <section id="profile">
     <div class="container">
       <h2 class="section-title anim-up">Techno-Functional Consulting</h2>
       <p class="section-subtitle anim-up">Bridging strategic business objectives with enterprise-grade software execution</p>
 
       <div class="bento-grid">
-        <!-- Left Bento Card: Profile, Unboxed Quick Intel & Streamlined Hobbies -->
         <div class="bento-card bento-profile anim-left">
           <div class="status-availability">
             <span class="status-dot"></span> Available for Consulting
@@ -1884,12 +2300,11 @@
           <h3>Devansh Agrawal</h3>
           <div class="role-tagline">Techno-Functional Consultant</div>
 
-          <!-- Full-Width Meta Row Badges (No Horizontal Clipping) -->
           <div class="profile-meta-list">
             <div class="meta-row-item">
               <i class="fa-solid fa-location-dot"></i>
               <span class="meta-label">Location:</span>
-              <strong class="meta-val">Udaipur, Rajasthan</strong>
+              <strong class="meta-val">Udaipur, RJ</strong>
             </div>
             <div class="meta-row-item">
               <i class="fa-solid fa-earth-americas"></i>
@@ -1898,7 +2313,6 @@
             </div>
           </div>
 
-          <!-- Simple Direct Inline Hobbies (No Outer Box) -->
           <div class="profile-simple-hobbies">
             <span class="hobbies-label"><i class="fa-solid fa-compass"></i> Beyond The Code:</span>
             <div class="hobbies-pill-row">
@@ -1908,7 +2322,6 @@
             </div>
           </div>
 
-          <!-- Social Links Strip -->
           <div class="profile-social-mini">
             <a href="https://wa.me/919001140690" target="_blank" class="social-btn wa" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
             <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
@@ -1918,7 +2331,6 @@
           </div>
         </div>
 
-        <!-- Right Bento Mesh (Slides in from Right) -->
         <div class="bento-right-mesh anim-right">
           <div class="bento-card bento-lead-card">
             <div class="bento-badge-header">
@@ -1972,15 +2384,147 @@
     </div>
   </section>
 
-  <!-- ================= 4. SKILLS MATRIX (FULL WIDTH 4TH BOX IN DESKTOP) ================= -->
-  <section id="skills" style="background: var(--bg-surface);">
+  <!-- ================= 4. SERVICES SECTION (NO NUMBERS - CLEAN WAVY PEAKS) ================= -->
+  <section id="services" style="background: var(--bg-surface);">
+    <div class="container">
+      <h2 class="section-title anim-up">Services & Consulting Offerings</h2>
+      <p class="section-subtitle anim-up">Comprehensive technical architecture and functional consulting tailored for modern Odoo deployments</p>
+
+      <!-- 2 Core Service Pillars -->
+      <div class="services-grid-2">
+        <!-- Pillar 1: Technical Consulting -->
+        <div class="service-card anim-up">
+          <div class="service-icon-wrap"><i class="fa-solid fa-code"></i></div>
+          <h3>Technical Consulting</h3>
+          <p>Bespoke Python model engineering, database performance optimization, QWeb reporting engines, and custom Owl JS components. Includes robust execution of enterprise integrations and schema version migrations.</p>
+          <div class="service-deliverables">
+            <span class="service-chip">Custom Python Modules</span>
+            <span class="service-chip">PostgreSQL Optimization</span>
+            <span class="service-chip">REST API Integrations</span>
+            <span class="service-chip">Version Upgrades (v14-v19)</span>
+            <span class="service-chip">Magento & Adobe Sync</span>
+            <span class="service-chip">QWeb & Owl JS</span>
+          </div>
+          <a href="#contact" class="service-link">Discuss Technical Scope <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <!-- Pillar 2: Functional Consulting -->
+        <div class="service-card anim-up">
+          <div class="service-icon-wrap"><i class="fa-solid fa-briefcase"></i></div>
+          <h3>Functional Consulting</h3>
+          <p>Translating ambiguous business challenges into formal Business Requirement Documents (BRDs), Functional Specifications (FSDs), and Work Breakdown Structures (WBS) across CRM, Sales, Inventory, Accounting, and MRP.</p>
+          <div class="service-deliverables">
+            <span class="service-chip">BRD & FSD Blueprinting</span>
+            <span class="service-chip">Gap Analysis</span>
+            <span class="service-chip">Standard Odoo Alignment</span>
+            <span class="service-chip">WBS Effort Estimation</span>
+            <span class="service-chip">UAT & User Training</span>
+            <span class="service-chip">Process Mapping</span>
+          </div>
+          <a href="#contact" class="service-link">Book Functional Discovery <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- STREAMLINED METHODOLOGY: ICONS ABOVE WAVE, LABELS BELOW (NO NUMBERS) -->
+      <div class="methodology-sub anim-up">
+        <div class="methodology-header">
+          <h3>Execution Methodology</h3>
+        </div>
+
+        <div class="curved-pipeline-container">
+          <!-- Desktop Continuous Horizontal Sine Path (Wave passes smoothly through gap) -->
+          <svg class="curved-svg-line" viewBox="0 0 1200 240" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="line-glow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#8b557d" />
+                <stop offset="50%" stop-color="#00a09d" />
+                <stop offset="100%" stop-color="#10b981" />
+              </linearGradient>
+            </defs>
+            <path class="curved-path-base" d="M 0 100 C 50 100, 60 100, 100 100 C 180 100, 220 160, 300 160 C 380 160, 420 100, 500 100 C 580 100, 620 160, 700 160 C 780 160, 820 100, 900 100 C 980 100, 1020 160, 1100 160 C 1140 160, 1160 160, 1200 160" />
+            <path class="curved-path-pulse" d="M 0 100 C 50 100, 60 100, 100 100 C 180 100, 220 160, 300 160 C 380 160, 420 100, 500 100 C 580 100, 620 160, 700 160 C 780 160, 820 100, 900 100 C 980 100, 1020 160, 1100 160 C 1140 160, 1160 160, 1200 160" />
+          </svg>
+
+          <!-- Mobile Pure CSS Hardware-Accelerated Vertical Laser Track -->
+          <div class="mobile-laser-track"></div>
+
+          <!-- 6 Process Nodes: Icons strictly above wave, text strictly below wave (Zero numbers) -->
+          <div class="curved-step-grid">
+            
+            <!-- Step 1 -->
+            <div class="curved-step-node">
+              <div class="step-top-zone">
+                <i class="fa-solid fa-magnifying-glass-chart node-icon-wrap"></i>
+              </div>
+              <div class="step-bottom-zone">
+                <span class="node-title-text">Business<br>Understanding</span>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="curved-step-node">
+              <div class="step-top-zone">
+                <i class="fa-solid fa-compass-drafting node-icon-wrap"></i>
+              </div>
+              <div class="step-bottom-zone">
+                <span class="node-title-text">Solution<br>Mapping</span>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="curved-step-node">
+              <div class="step-top-zone">
+                <i class="fa-solid fa-code node-icon-wrap"></i>
+              </div>
+              <div class="step-bottom-zone">
+                <span class="node-title-text">Customisation</span>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="curved-step-node">
+              <div class="step-top-zone">
+                <i class="fa-solid fa-vial-circle-check node-icon-wrap"></i>
+              </div>
+              <div class="step-bottom-zone">
+                <span class="node-title-text">Project<br>QA</span>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="curved-step-node">
+              <div class="step-top-zone">
+                <i class="fa-solid fa-users-gear node-icon-wrap"></i>
+              </div>
+              <div class="step-bottom-zone">
+                <span class="node-title-text">UAT</span>
+              </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="curved-step-node">
+              <div class="step-top-zone">
+                <i class="fa-solid fa-rocket node-icon-wrap"></i>
+              </div>
+              <div class="step-bottom-zone">
+                <span class="node-title-text">Live &<br>Support</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= 5. SKILLS MATRIX ================= -->
+  <section id="skills">
     <div class="container">
       <h2 class="section-title anim-up">Technical Skills & Functional Ecosystem</h2>
       <p class="section-subtitle anim-up">Categorized competencies spanning ERP functional consulting, core software engineering, and modern delivery</p>
 
       <div class="skills-matrix-grid">
-        
-        <!-- Pillar 1: Odoo Functional Modules -->
         <div class="matrix-card anim-left">
           <div class="matrix-head">
             <div class="matrix-icon-wrap teal"><i class="fa-solid fa-cubes-stacked"></i></div>
@@ -2007,7 +2551,6 @@
           </div>
         </div>
 
-        <!-- Pillar 2: Core Engineering & Stack -->
         <div class="matrix-card anim-up">
           <div class="matrix-head">
             <div class="matrix-icon-wrap"><i class="fa-solid fa-server"></i></div>
@@ -2030,7 +2573,6 @@
           </div>
         </div>
 
-        <!-- Pillar 3: Techno-Functional Consulting -->
         <div class="matrix-card anim-right">
           <div class="matrix-head">
             <div class="matrix-icon-wrap teal"><i class="fa-solid fa-briefcase"></i></div>
@@ -2051,7 +2593,6 @@
           </div>
         </div>
 
-        <!-- Pillar 4: AI & Dev Ecosystem (SPREADS FULL WIDTH ON DESKTOP) -->
         <div class="matrix-card full-width-desktop anim-up">
           <div class="matrix-head">
             <div class="matrix-icon-wrap"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
@@ -2073,24 +2614,27 @@
             <span class="skill-tag-item"><i class="fa-solid fa-atom"></i> Anti Gravity</span>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ================= 5. CAREER PIPELINE ================= -->
-  <section id="experience">
+  <!-- ================= 6. CAREER PIPELINE ================= -->
+  <section id="experience" style="background: var(--bg-surface);">
     <div class="container">
       <h2 class="section-title anim-up">Professional Experience</h2>
       <p class="section-subtitle anim-up">Demonstrated record delivering enterprise ERP architectures and functional implementations</p>
 
       <div class="career-pipeline">
 
-        <!-- Role 1: iProgrammer (Animates Left) -->
+        <!-- Role 1: iProgrammer -->
         <div class="career-node featured anim-left">
           <div class="career-entity-col">
             <div class="corp-logo-wrap">
-              <img src="https://www.google.com/s2/favicons?domain=iprogrammer.com&sz=128" alt="iProgrammer" onerror="this.parentElement.innerHTML='<span class=\'corp-monogram\'>IP</span>'">
+              <img 
+                src="https://logo.clearbit.com/iprogrammer.com" 
+                alt="iProgrammer" 
+                onerror="renderFallbackLogo(this, 'iprogrammer.com', 'IP')" 
+              />
             </div>
             <div class="company-name">iProgrammer Solutions Pvt. Ltd.</div>
             <div class="career-date-tag">Jul 2026 - Present</div>
@@ -2119,16 +2663,20 @@
               <span class="pipeline-chip">Pre-Sales</span>
               <span class="pipeline-chip">Industry Solutions</span>
               <span class="pipeline-chip">Community & Enterprise</span>
-              <span class="pipeline-chip">Solution  Architecting</span>
+              <span class="pipeline-chip">Solution Architecting</span>
             </div>
           </div>
         </div>
 
-        <!-- Role 2: Ksolves (Animates Right) -->
+        <!-- Role 2: Ksolves -->
         <div class="career-node anim-right">
           <div class="career-entity-col">
             <div class="corp-logo-wrap">
-              <img src="https://www.google.com/s2/favicons?domain=ksolves.com&sz=128" alt="Ksolves" onerror="this.parentElement.innerHTML='<span class=\'corp-monogram\'>KS</span>'">
+              <img 
+                src="https://logo.clearbit.com/ksolves.com" 
+                alt="Ksolves" 
+                onerror="renderFallbackLogo(this, 'ksolves.com', 'KS')" 
+              />
             </div>
             <div class="company-name">Ksolves India Pvt. Ltd.</div>
             <div class="career-date-tag">Nov 2025 - Jul 2026</div>
@@ -2163,11 +2711,15 @@
           </div>
         </div>
 
-        <!-- Role 3: Brainvire (Animates Left) -->
+        <!-- Role 3: Brainvire -->
         <div class="career-node anim-left">
           <div class="career-entity-col">
             <div class="corp-logo-wrap">
-              <img src="https://www.google.com/s2/favicons?domain=brainvire.com&sz=128" alt="Brainvire" onerror="this.parentElement.innerHTML='<span class=\'corp-monogram\'>BV</span>'">
+              <img 
+                src="https://logo.clearbit.com/brainvire.com" 
+                alt="Brainvire" 
+                onerror="renderFallbackLogo(this, 'brainvire.com', 'BV')" 
+              />
             </div>
             <div class="company-name">Brainvire Infotech Inc.</div>
             <div class="career-date-tag">Jun 2023 - Aug 2025</div>
@@ -2201,11 +2753,15 @@
           </div>
         </div>
 
-        <!-- Role 4: Pingaksh (Animates Right) -->
+        <!-- Role 4: Pingaksh -->
         <div class="career-node anim-right">
           <div class="career-entity-col">
             <div class="corp-logo-wrap">
-              <img src="https://www.google.com/s2/favicons?domain=pingakshtechnologies.com&sz=128" alt="Pingaksh" onerror="this.parentElement.innerHTML='<span class=\'corp-monogram\'>PT</span>'">
+              <img 
+                src="https://logo.clearbit.com/pingakshtechnologies.com" 
+                alt="Pingaksh" 
+                onerror="renderFallbackLogo(this, 'pingakshtechnologies.com', 'PT')" 
+              />
             </div>
             <div class="company-name">Pingaksh Technologies</div>
             <div class="career-date-tag">Jan 2023 - Jun 2023</div>
@@ -2238,8 +2794,8 @@
     </div>
   </section>
 
-  <!-- ================= 6. PROJECTS SECTION ================= -->
-  <section id="projects" style="background: var(--bg-surface);">
+  <!-- ================= 7. PROJECTS SECTION ================= -->
+  <section id="projects">
     <div class="container">
       <h2 class="section-title anim-up">Featured Projects</h2>
       <p class="section-subtitle anim-up">Real-world enterprise integrations, migrations, and customized ERP solutions</p>
@@ -2258,18 +2814,20 @@
     </div>
   </section>
 
-  <!-- ================= 7. EDUCATION SECTION (WITH RYANGROUP.COM & LOGOS) ================= -->
-  <section id="education">
+  <!-- ================= 8. EDUCATION SECTION ================= -->
+  <section id="education" style="background: var(--bg-surface);">
     <div class="container">
       <h2 class="section-title anim-up">Education Credentials</h2>
       <p class="section-subtitle anim-up">Formal computer science foundations and academic qualifications</p>
 
       <div class="education-pipeline">
-        
-        <!-- B.Tech Degree (Animates Left) -->
         <div class="edu-node btech anim-left">
           <div class="edu-logo-frame">
-            <img src="https://www.google.com/s2/favicons?domain=marwadiuniversity.ac.in&sz=128" alt="Marwadi University" onerror="this.parentElement.innerHTML='<span class=\'edu-monogram\'>MU</span>'">
+            <img 
+              src="https://logo.clearbit.com/marwadiuniversity.ac.in" 
+              alt="Marwadi University" 
+              onerror="renderFallbackLogo(this, 'marwadiuniversity.ac.in', 'MU')" 
+            />
           </div>
           <div class="edu-detail">
             <h3>Bachelors of Technology - Computer Science (AI)</h3>
@@ -2284,10 +2842,13 @@
           </div>
         </div>
 
-        <!-- Class XII (Animates Right) -->
         <div class="edu-node anim-right">
           <div class="edu-logo-frame">
-            <img src="https://www.google.com/s2/favicons?domain=ryangroup.org&sz=128" alt="Ryan International School" onerror="this.parentElement.innerHTML='<span class=\'edu-monogram\'>RIS</span>'">
+            <img 
+              src="https://logo.clearbit.com/ryangroup.org" 
+              alt="Ryan International School" 
+              onerror="renderFallbackLogo(this, 'ryangroup.org', 'RIS')" 
+            />
           </div>
           <div class="edu-detail">
             <h3>Senior Secondary Certificate - CBSE</h3>
@@ -2300,10 +2861,13 @@
           </div>
         </div>
 
-        <!-- Class X (Animates Left) -->
         <div class="edu-node anim-left">
           <div class="edu-logo-frame">
-            <img src="https://www.google.com/s2/favicons?domain=ryangroup.org&sz=128" alt="Ryan International School" onerror="this.parentElement.innerHTML='<span class=\'edu-monogram\'>RIS</span>'">
+            <img 
+              src="https://logo.clearbit.com/ryangroup.org" 
+              alt="Ryan International School" 
+              onerror="renderFallbackLogo(this, 'ryangroup.org', 'RIS')" 
+            />
           </div>
           <div class="edu-detail">
             <h3>Secondary Certificate - CBSE</h3>
@@ -2315,13 +2879,12 @@
             <span class="badge-loc" style="font-size: 0.78rem;">Udaipur, RJ</span>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ================= 8. CONTACT SECTION ================= -->
-  <section id="contact" style="background: var(--bg-surface);">
+  <!-- ================= 9. CONTACT SECTION ================= -->
+  <section id="contact">
     <div class="container">
       <h2 class="section-title anim-up">Contact Me</h2>
       <p class="section-subtitle anim-up">Let's discuss your next Odoo implementation or technical requirement</p>
@@ -2354,7 +2917,7 @@
     </div>
   </section>
 
-  <!-- ================= FOOTER (100% IDENTICAL LOGO) ================= -->
+  <!-- ================= FOOTER ================= -->
   <footer>
     <div class="container">
       <div class="footer-grid">
@@ -2400,6 +2963,7 @@
           <ul class="footer-contacts" style="list-style: none;">
             <li><a href="#home">Home</a></li>
             <li><a href="#profile">About Me</a></li>
+            <li><a href="#services">Services</a></li>
             <li><a href="#skills">Skills & Ecosystem</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Enterprise Projects</a></li>
@@ -2412,7 +2976,7 @@
           <ul class="footer-contacts">
             <li><i class="fa-solid fa-envelope"></i> devanshagrawaludp@gmail.com</li>
             <li><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> +91 90011 40690</li>
-            <li><i class="fa-solid fa-location-dot"></i> Udaipur, Rajasthan / Pune, India</li>
+            <li><i class="fa-solid fa-location-dot"></i> Udaipur, RJ</li>
             <li><i class="fa-solid fa-briefcase"></i> Open for Consulting</li>
           </ul>
         </div>
@@ -2424,8 +2988,28 @@
     </div>
   </footer>
 
-  <!-- ================= JAVASCRIPT ================= -->
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
+    /* -------------------------------------------
+       DYNAMIC JOINING & CAREER EXPERIENCE CALCULATOR
+    ------------------------------------------- */
+    const CAREER_START_DATE = new Date("2023-03-01");
+
+    function calculateDynamicExperience() {
+      const now = new Date();
+      let totalMonths = (now.getFullYear() - CAREER_START_DATE.getFullYear()) * 12 + (now.getMonth() - CAREER_START_DATE.getMonth());
+      if (now.getDate() < CAREER_START_DATE.getDate()) totalMonths--;
+      
+      const years = (totalMonths / 12).toFixed(1);
+      return years.endsWith('.0') ? parseInt(years, 10).toString() : years;
+    }
+
+    const dynYears = calculateDynamicExperience();
+    const expCounterEl = document.getElementById('experienceCounter');
+    if (expCounterEl) {
+      expCounterEl.setAttribute('data-target', dynYears);
+    }
+
     /* -------------------------------------------
        1. BIDIRECTIONAL SCROLL-REVEAL OBSERVER
     ------------------------------------------- */
@@ -2462,21 +3046,23 @@
       const duration = 1800;
 
       counters.forEach(counter => {
-        const target = +counter.getAttribute('data-target');
+        const targetStr = counter.getAttribute('data-target');
+        const isDecimal = targetStr.includes('.');
+        const target = parseFloat(targetStr);
         const startTime = performance.now();
 
         function updateCount(currentTime) {
           const elapsedTime = currentTime - startTime;
           const progress = Math.min(elapsedTime / duration, 1);
           const easeOut = 1 - (1 - progress) * (1 - progress);
-          const currentVal = Math.floor(easeOut * target);
+          const currentVal = easeOut * target;
 
-          counter.innerText = currentVal;
+          counter.innerText = isDecimal ? currentVal.toFixed(1) : Math.floor(currentVal);
 
           if (progress < 1) {
             requestAnimationFrame(updateCount);
           } else {
-            counter.innerText = target;
+            counter.innerText = targetStr;
           }
         }
         requestAnimationFrame(updateCount);
@@ -2510,7 +3096,7 @@
     });
 
     /* -------------------------------------------
-       4. RESUME PROJECTS WITH REAL TECH ICONS
+       4. PROJECTS WITH TECH ICONS & PAGINATION
     ------------------------------------------- */
     const allProjects = [
       {
@@ -2639,8 +3225,9 @@
     const phrases = [
       "Techno-Functional Odoo Consultant",
       "Python Software Engineer",
-      "Odoo v16 - v19 Specialist",
-      "API & Workflow Architect"
+      "Enterprise ERP Architect",
+      "Odoo Implementor",
+      "AI-Augmented Software Engineer"
     ];
     let phraseIndex = 0;
     let charIndex = 0;
@@ -2673,30 +3260,37 @@
     type();
 
     /* -------------------------------------------
-       6. THEME TOGGLE
+       6. THEME TOGGLE (DESKTOP & MOBILE DRAWER)
     ------------------------------------------- */
     const themeToggleBtn = document.getElementById('themeToggle');
+    const mobileThemeToggle = document.getElementById('mobileThemeToggle');
     const htmlEl = document.documentElement;
     const savedTheme = localStorage.getItem('theme') || 'dark';
     htmlEl.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
 
-    themeToggleBtn.addEventListener('click', () => {
+    function toggleThemeAction() {
       const activeTheme = htmlEl.getAttribute('data-theme');
       const nextTheme = activeTheme === 'light' ? 'dark' : 'light';
       htmlEl.setAttribute('data-theme', nextTheme);
       localStorage.setItem('theme', nextTheme);
       updateThemeIcon(nextTheme);
-    });
+    }
+
+    if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleThemeAction);
+    if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleThemeAction);
 
     function updateThemeIcon(theme) {
-      themeToggleBtn.innerHTML = theme === 'dark' 
+      const iconMarkup = theme === 'dark' 
         ? '<i class="fa-solid fa-sun" style="color: #f59e0b;"></i>' 
         : '<i class="fa-solid fa-moon" style="color: #714B67;"></i>';
+      
+      if (themeToggleBtn) themeToggleBtn.innerHTML = iconMarkup;
+      if (mobileThemeToggle) mobileThemeToggle.innerHTML = `${iconMarkup} Mode: ${theme.toUpperCase()}`;
     }
 
     /* -------------------------------------------
-       7. MOBILE NAVBAR CONTROLLER (SCROLL LOCK)
+       7. MOBILE NAVBAR CONTROLLER (DRAWER & AUTO-CLOSE)
     ------------------------------------------- */
     const mobileToggle = document.getElementById('mobileToggle');
     const navLinks = document.getElementById('navLinks');
@@ -2726,7 +3320,7 @@
     });
 
     /* -------------------------------------------
-       8. LIVE FORMSPREE SUBMISSION
+       8. FORMSPREE SUBMISSION HANDLER
     ------------------------------------------- */
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
